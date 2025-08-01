@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- #region Barrel -->
+  <!-- ExtendedBarrel -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_ExtendedBarrel</defName>
+    <label>extended barrel</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+      <RangedWeapon_RangeMultiplier>0.2</RangedWeapon_RangeMultiplier>
+    </statOffsets>
+  </WeaponTraitDef>
+
+  <!-- ShortenedBarrel -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_ShortenedBarrel</defName>
+    <label>shortened barrel</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+      <RangedWeapon_WarmupMultiplier>-0.2</RangedWeapon_WarmupMultiplier>
+      <RangedWeapon_RangeMultiplier>-0.2</RangedWeapon_RangeMultiplier>
+    </statOffsets>
+  </WeaponTraitDef>
+
+  <!-- TacticalBarrel -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_TacticalBarrel</defName>
+    <label>LMG tactical barrel</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <burstShotCountMultiplier>1.5</burstShotCountMultiplier>
+  </WeaponTraitDef>
+  <!-- #endregion -->
+
+  <!-- Receiver -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_RapidReceiver</defName>
+    <label>rapid receiver</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <burstShotSpeedMultiplier>2</burstShotSpeedMultiplier>
+  </WeaponTraitDef>
+
+  <!-- Trigger -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_RapidTrigger</defName>
+    <label>rapid trigger</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <burstShotSpeedMultiplier>1.5</burstShotSpeedMultiplier>
+  </WeaponTraitDef>
+
+  <!-- Stock -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_TelescopicStock</defName>
+    <label>telescopic stock</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <Mass>0.9</Mass>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_ShortenedStock</defName>
+    <label>telescopic stock</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <Mass>0.9</Mass>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_FoldStock</defName>
+    <label>fold stock</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <Mass>0.9</Mass>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <!-- Grip -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_CustomGrip</defName>
+    <label>custom grip</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.1</AccuracyTouch>
+      <AccuracyShort>1.1</AccuracyShort>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <!-- Sight -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_IronSight</defName>
+    <label>custom grip</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.2</AccuracyTouch>
+      <AccuracyShort>1.2</AccuracyShort>
+      <AccuracyMedium>1.2</AccuracyMedium>
+      <AccuracyLong>1.2</AccuracyLong>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_Holoscope</defName>
+    <label>custom grip</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.2</AccuracyTouch>
+      <AccuracyShort>1.2</AccuracyShort>
+      <AccuracyMedium>1.2</AccuracyMedium>
+      <AccuracyLong>1.2</AccuracyLong>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_RedDotScope</defName>
+    <label>red dot scope</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.2</AccuracyTouch>
+      <AccuracyShort>1.2</AccuracyShort>
+      <AccuracyMedium>1.2</AccuracyMedium>
+      <AccuracyLong>1.2</AccuracyLong>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_2xScope</defName>
+    <label>2x scope</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.2</AccuracyTouch>
+      <AccuracyShort>1.2</AccuracyShort>
+      <AccuracyMedium>1.2</AccuracyMedium>
+      <AccuracyLong>1.2</AccuracyLong>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_4xScope</defName>
+    <label>2x scope</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.2</AccuracyTouch>
+      <AccuracyShort>1.2</AccuracyShort>
+      <AccuracyMedium>1.2</AccuracyMedium>
+      <AccuracyLong>1.2</AccuracyLong>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_8xScope</defName>
+    <label>8x scope</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.2</AccuracyTouch>
+      <AccuracyShort>1.2</AccuracyShort>
+      <AccuracyMedium>1.2</AccuracyMedium>
+      <AccuracyLong>1.2</AccuracyLong>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <!-- Magazine -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_RepidMagazine</defName>
+    <label>repid magazine</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <RangedWeapon_Cooldown>0.8</RangedWeapon_Cooldown>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_ExtendedMagazine</defName>
+    <label>extended magazine</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <burstShotCountMultiplier>1.5</burstShotCountMultiplier>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_beltMagazine</defName>
+    <label>belt magazine</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <burstShotCountMultiplier>1.5</burstShotCountMultiplier>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_DrumMagazine</defName>
+    <label>LMG repid magazine</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <burstShotCountMultiplier>1.5</burstShotCountMultiplier>
+  </WeaponTraitDef>
+
+  <!-- Underbarrel -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_VerticalGrip</defName>
+    <label>vertical grip</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.1</AccuracyTouch>
+      <AccuracyShort>1.1</AccuracyShort>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_TriangularGrip</defName>
+    <label>triangular grip</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.1</AccuracyTouch>
+      <AccuracyShort>1.1</AccuracyShort>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_AimAssistance</defName>
+    <label>triangular grip</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <statFactors>
+      <AccuracyTouch>1.1</AccuracyTouch>
+      <AccuracyShort>1.1</AccuracyShort>
+    </statFactors>
+  </WeaponTraitDef>
+
+  <WeaponTraitDef>
+    <defName>CWF_Trait_GrenadeLauncher</defName>
+    <label>grenade launcher</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+    </statOffsets>
+    <abilityProps>
+      <abilityDef>LaunchFragGrenade</abilityDef>
+      <maxCharges>1</maxCharges>
+      <soundReload>Standard_Reload</soundReload>
+      <chargeNoun>grenade</chargeNoun>
+      <ammoDef>Steel</ammoDef>
+      <ammoCountPerCharge>25</ammoCountPerCharge>
+      <baseReloadTicks>60</baseReloadTicks>
+    </abilityProps>
+  </WeaponTraitDef>
+
+  <!-- Ammo -->
+  <WeaponTraitDef>
+    <defName>CWF_Trait_HeavyRounds</defName>
+    <label>vertical grip</label>
+    <description>.</description>
+    <commonality>1</commonality>
+    <statOffsets>
+      <MarketValue>50</MarketValue>
+      <RangedWeapon_DamageMultiplier>0.1</RangedWeapon_DamageMultiplier>
+    </statOffsets>
+    <additionalStoppingPower>2</additionalStoppingPower>
+  </WeaponTraitDef>
+</Defs>
