@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { Texture } from '@/types'
+import { Texture } from '@/modules/Texture'
 
 export const useOffsetStore = defineStore('offset', () => {
   const backTex = ref<Texture>(new Texture('Background'))

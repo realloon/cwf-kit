@@ -18,7 +18,6 @@ const store = useOffsetStore()
       </template>
     </section>
   </main>
-
 </template>
 
 <style scoped>

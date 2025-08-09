@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppHeader from './containers/AppHeader.vue';
+import AppHeader from './containers/AppHeader.vue'
 </script>
 
 <template>
@@ -7,5 +7,3 @@ import AppHeader from './containers/AppHeader.vue';
 
   <router-view />
 </template>
-
-<style scoped></style>

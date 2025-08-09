@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { routes } from '@/router';
-import { useTitle } from '../hooks/useTitle';
+import { routes } from '@/router'
+import { capitalize } from '@/utils';
 </script>
 
 <template>
@@ -9,7 +9,9 @@ import { useTitle } from '../hooks/useTitle';
     <nav>
       <ul>
         <li v-for="route in routes.filter(route => route.name !== 'home')">
-          <router-link :to="route.path">{{ route.name }}</router-link>
+          <router-link :to="route.path">
+            {{ capitalize(route.name) }}
+          </router-link>
         </li>
       </ul>
     </nav>
