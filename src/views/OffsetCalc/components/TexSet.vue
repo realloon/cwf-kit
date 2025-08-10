@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Texture } from '@/types';
+import { Texture } from '@/modules/Texture'
 const { texture } = defineProps<{
-  texture: Texture,
+  texture: Texture
   isOffsetable?: boolean
 }>()
 </script>
@@ -16,29 +16,72 @@ const { texture } = defineProps<{
       <section :class="!isOffsetable && 'large'">
         <label>
           <span class="btn">Texture</span>
-          <input @change="texture.update($event)" type="file" name="baseTex" hidden>
+          <input
+            @change="texture.update($event)"
+            type="file"
+            name="baseTex"
+            hidden
+          />
         </label>
 
         <label>
-          <input v-model="texture.shouldDisplay" :disabled="!texture.src" type="checkbox" name="checkbox">
+          <input
+            v-model="texture.shouldDisplay"
+            :disabled="!texture.src"
+            type="checkbox"
+            name="checkbox"
+          />
           <span>Display</span>
         </label>
 
         <label v-if="!isOffsetable">
-          <input v-model="texture.isMasked" :disabled="!texture.src" type="checkbox" name="checkbox">
+          <input
+            v-model="texture.isMasked"
+            :disabled="!texture.src"
+            type="checkbox"
+            name="checkbox"
+          />
           <span>Mask</span>
         </label>
       </section>
 
       <section v-if="isOffsetable">
         <label>
-          <input v-model="texture.x" :disabled="!texture.src" type="range" min="-64" max="256" name="x">
-          <input v-model="texture.x" :disabled="!texture.src" type="number" min="-64" max="256" name="x">
+          <input
+            v-model="texture.x"
+            :disabled="!texture.src"
+            type="range"
+            min="-72"
+            max="320"
+            name="x"
+          />
+          <input
+            v-model="texture.x"
+            :disabled="!texture.src"
+            type="number"
+            min="-72"
+            max="320"
+            name="x"
+          />
         </label>
 
         <label>
-          <input v-model="texture.y" :disabled="!texture.src" type="range" min="-64" max="256" name="y">
-          <input v-model="texture.y" :disabled="!texture.src" type="number" min="-64" max="256" name="y">
+          <input
+            v-model="texture.y"
+            :disabled="!texture.src"
+            type="range"
+            min="-72"
+            max="320"
+            name="y"
+          />
+          <input
+            v-model="texture.y"
+            :disabled="!texture.src"
+            type="number"
+            min="-72"
+            max="320"
+            name="y"
+          />
         </label>
       </section>
     </div>
@@ -79,7 +122,7 @@ label {
   user-select: none;
 }
 
-input[type="number"] {
+input[type='number'] {
   width: 5ch;
   font-family: monospace;
 }
