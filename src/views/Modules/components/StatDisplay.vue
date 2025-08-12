@@ -1,11 +1,23 @@
 <script setup lang="ts">
-defineProps<{ label: string; code: unknown }>()
+const { code } = defineProps<{ label: string; code: unknown }>()
+import { ref, onMounted, computed } from 'vue'
+import { codeToHtml } from 'shiki'
+
+const json = computed(() => JSON.stringify(code, null, 2))
+const highlighted = ref<string | null>(null)
+onMounted(async () => {
+  highlighted.value = await codeToHtml(json.value, {
+    lang: 'json',
+    theme: 'min-light',
+  })
+})
 </script>
 
 <template>
   <div class="stat-display" v-if="code">
     <span>{{ label }}</span>
-    <pre>{{ code }}</pre>
+    <pre v-if="!highlighted">{{ json }}</pre>
+    <div v-else v-html="highlighted"></div>
   </div>
 </template>
 
@@ -19,9 +31,5 @@ defineProps<{ label: string; code: unknown }>()
 span {
   font-size: 0.875rem;
   font-weight: bold;
-}
-
-pre {
-  background-color: transparent;
 }
 </style>

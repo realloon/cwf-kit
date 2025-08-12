@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { IconEye } from '@/components'
+import FileButton from './FileButton.vue'
 import { Texture } from '@/modules/Texture'
 const { texture } = defineProps<{
   texture: Texture
@@ -9,31 +11,22 @@ const { texture } = defineProps<{
 <template>
   <form @submit.prevent>
     <header>
-      <h3 :class="texture.src && 'is-active'">{{ texture.name }}</h3>
+      <FileButton :label="texture.name" :texture="texture" />
+
+      <label style="display: flex; align-items: center">
+        <input
+          v-model="texture.shouldDisplay"
+          :disabled="!texture.src"
+          type="checkbox"
+          name="checkbox"
+          hidden
+        />
+        <IconEye />
+      </label>
     </header>
 
     <div class="view">
       <section :class="!isOffsetable && 'large'">
-        <label>
-          <span class="btn">Texture</span>
-          <input
-            @change="texture.update($event)"
-            type="file"
-            name="baseTex"
-            hidden
-          />
-        </label>
-
-        <label>
-          <input
-            v-model="texture.shouldDisplay"
-            :disabled="!texture.src"
-            type="checkbox"
-            name="checkbox"
-          />
-          <span>Display</span>
-        </label>
-
         <label v-if="!isOffsetable">
           <input
             v-model="texture.isMasked"
@@ -45,7 +38,10 @@ const { texture } = defineProps<{
         </label>
       </section>
 
-      <section v-if="isOffsetable">
+      <section
+        v-if="isOffsetable"
+        style="z-index: 10; display: flex; flex-direction: column"
+      >
         <label>
           <input
             v-model="texture.x"
@@ -99,6 +95,12 @@ form {
   outline: 1px solid gray;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 h3 {
   font-weight: bold;
   cursor: pointer;
@@ -115,25 +117,9 @@ h3 {
   gap: 8px;
 }
 
-label {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  user-select: none;
-}
-
 input[type='number'] {
   width: 5ch;
   font-family: monospace;
-}
-
-.btn {
-  display: block;
-  cursor: pointer;
-  border: 1px solid black;
-  padding: 4px 6px 6px;
-  border-radius: 2px;
-  font-size: 0.875rem;
 }
 
 .large {

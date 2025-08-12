@@ -35,12 +35,12 @@ defineProps<{ name: string; to: string }>()
     background-color: #efefef;
   }
 
-  &.router-link-active span {
-    font-weight: bold;
-  }
-
   span {
     font-size: 0.875rem;
+    font-family: monospace;
+  }
+  &.router-link-active span {
+    font-weight: bold;
   }
 }
 

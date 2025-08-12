@@ -7,23 +7,39 @@ defineProps<{ module: TraitModule }>()
 <template>
   <section>
     <h2>
-      <span class="italic">{{ module.modExtensions.li[0].part }}</span> {{ module.defName }}
+      <span class="italic">{{ module.modExtensions.li[0].part }}</span>
+      {{ module.defName }}
     </h2>
 
     <div class="main-view">
       <p>
-        Label: <code>{{ module.label }}</code>
+        <span class="key">Label</span>:
+        <code class="value">{{ module.label }}</code>
       </p>
       <p>
-        Description: <code>{{ module.description }}</code>
+        <span class="key">Description</span>:
+        <code class="value">{{ module.description }}</code>
       </p>
       <p>
-        WorkToMake: <code>{{ module.statBases.WorkToMake }}</code>
+        <span class="key">WorkToMake</span>:
+        <code class="value">{{ module.statBases.WorkToMake }}</code>
       </p>
 
-      <StatDisplay label="CostList" :code="module.costList" />
-      <StatDisplay label="StatOffsets" :code="module.statOffsets" />
-      <StatDisplay label="StatFactors" :code="module.statFactors" />
+      <StatDisplay
+        v-if="module.costList"
+        label="CostList"
+        :code="module.costList"
+      />
+      <StatDisplay
+        v-if="module.statOffsets"
+        label="StatOffsets"
+        :code="module.statOffsets"
+      />
+      <StatDisplay
+        v-if="module.statFactors"
+        label="StatFactors"
+        :code="module.statFactors"
+      />
       <!-- <pre>{{ module }}</pre> -->
     </div>
   </section>
@@ -54,10 +70,9 @@ h2 {
 
 p {
   font-family: monospace;
-  font-weight: bold;
 
-  code {
-    font-weight: initial;
+  .key {
+    font-weight: bold;
   }
 }
 </style>

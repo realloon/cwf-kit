@@ -26,6 +26,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",
     "npm-run-all2": "^8.0.4",
+    "shiki": "^3.9.2",
     "typescript": "~5.8.0",
     "vite": "npm:rolldown-vite@latest",
     "vue-tsc": "^3.0.4"
