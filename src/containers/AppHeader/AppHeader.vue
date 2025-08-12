@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { IconDev } from '@/components'
-import { IconList, IconTexture } from '@/components'
+import { IconDev, IconList, IconTexture } from '@/components'
 import NavItem from './components/NavItem.vue'
 </script>
 
