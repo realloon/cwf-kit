@@ -6,3 +6,5 @@ import Markdown from '@/components/Markdown.vue'
 <template>
   <Markdown :markdown="introduce" />
 </template>
+
+<style scoped></style>
