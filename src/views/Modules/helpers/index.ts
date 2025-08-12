@@ -1,5 +1,3 @@
-import modulesXML from '/Users/lizhen/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/CustomizeWeapon/Defs/TraitModules.xml?raw'
-import traitsXML from '/Users/lizhen/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/CustomizeWeapon/Defs/Traits.xml?raw'
 import type { Defs, ThingDef, WeaponTraitDef } from '@/types/Defs'
 import { ref } from 'vue'
 import { parser } from '@/utils'
@@ -33,9 +31,10 @@ function buildModuleDB(
 }
 
 export function useModuleDB() {
-  const modules = getDefs(modulesXML, 'ThingDef') as Array<ThingDef>
-  const traits = getDefs(traitsXML, 'WeaponTraitDef') as Array<WeaponTraitDef>
-  const moduleDB = ref(buildModuleDB(modules, traits))
-
-  return { moduleDB }
+  // import modulesXML from '/Users/lizhen/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/CustomizeWeapon/Defs/TraitModules.xml?raw'
+  // import traitsXML from '/Users/lizhen/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/CustomizeWeapon/Defs/Traits.xml?raw'
+  // const modules = getDefs(modulesXML, 'ThingDef') as Array<ThingDef>
+  // const traits = getDefs(traitsXML, 'WeaponTraitDef') as Array<WeaponTraitDef>
+  // const moduleDB = ref(buildModuleDB(modules, traits))
+  // return { moduleDB }
 }
