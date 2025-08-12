@@ -7,6 +7,10 @@
 
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    "types": ["vite/client", "wicg-file-system-access"]
   }
 }

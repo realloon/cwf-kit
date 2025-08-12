@@ -1,41 +1,4 @@
-import type { Defs, ThingDef, WeaponTraitDef, TraitModule } from '@/types/Defs'
-import { ref } from 'vue'
-import { parser } from '@/utils'
-
-function getDefs(xml: string, type: 'ThingDef' | 'WeaponTraitDef') {
-  const resource: Defs = parser.parse(xml)
-
-  return type === 'ThingDef'
-    ? resource.Defs.ThingDef.filter(def => def.defName)
-    : resource.Defs.WeaponTraitDef
-}
-
-function buildModuleDB(
-  modules: Array<ThingDef>,
-  traits: Array<WeaponTraitDef>
-) {
-  const moduleDB: Array<TraitModule> = []
-
-  modules.forEach(moduel => {
-    const target = moduel.modExtensions.li[0].weaponTraitDef
-    const trait = traits.find(trait => trait.defName === target)
-
-    if (!trait) {
-      throw new Error(`${moduel.defName} can't find matchered trait ${target}`)
-    }
-
-    moduleDB.push(Object.assign(moduel, trait))
-  })
-
-  return moduleDB
-}
-
-export async function useModuleDB() {
-  const modulesXML = (await import('@/assets/Modules.xml?raw')).default
-  const traitsXML = (await import('@/assets/Traits.xml?raw')).default
-
-  const modules = getDefs(modulesXML, 'ThingDef') as Array<ThingDef>
-  const traits = getDefs(traitsXML, 'WeaponTraitDef') as Array<WeaponTraitDef>
-  const moduleDB = ref(buildModuleDB(modules, traits))
-  return { moduleDB }
-}
+export { getDefs } from './getDefs'
+export { buildTraitModules } from './buildTraitModules'
+export { getAllHandles } from './getAllHandles'
+export { mergeObjArray } from './mergeObjArray'

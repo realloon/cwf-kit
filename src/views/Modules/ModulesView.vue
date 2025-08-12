@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import type { TraitModule } from '@/types/Defs'
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref } from 'vue'
 import { parts } from '@/types/Defs'
 import { Checkbox, IconFilter } from '@/components'
 import Module from './components/Module.vue'
-import { useModuleDB } from './helpers'
+import { useModules } from './hooks/useModules'
 
-const modules = ref<TraitModule[]>([])
-onMounted(async () => {
-  const { moduleDB } = await useModuleDB()
-  modules.value = moduleDB.value
-})
+const { loadXmlFiles, isLoaded, traitModules } = useModules()
 
-const partsFilter = ref(parts)
+const filter = ref(parts)
 const filteredModules = computed(() =>
-  modules.value.filter(module =>
-    partsFilter.value.includes(module.modExtensions.li[0].part)
+  traitModules.value.filter(module =>
+    filter.value.includes(module.modExtensions.li[0].part)
   )
 )
 </script>
@@ -24,11 +20,13 @@ const filteredModules = computed(() =>
   <main>
     <h1 hidden>Modules</h1>
 
+    <button @click="loadXmlFiles">Click me</button>
+
     <section class="part-filter">
       <IconFilter />
       <Checkbox
         v-for="part in parts"
-        v-model="partsFilter"
+        v-model="filter"
         :label="part"
         :value="part"
       />

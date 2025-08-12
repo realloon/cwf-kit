@@ -1,3 +1,8 @@
+export interface DefDatabase {
+  ThingDef: Array<ThingDef>
+  WeaponTraitDef: Array<WeaponTraitDef>
+}
+
 export type Defs = {
   '?xml': {
     '@_encoding': string
@@ -12,6 +17,7 @@ export type Defs = {
 export type TraitModule = ThingDef & WeaponTraitDef
 
 export type ThingDef = {
+  '@_ParentName': string
   defName: string
   costList: Record<string, number>
   statBases: { WorkToMake: number }
@@ -36,6 +42,7 @@ type GraphicCase = {
 }
 
 export type WeaponTraitDef = {
+  '@_ParentName': string
   defName: string
   label: string
   description: string
