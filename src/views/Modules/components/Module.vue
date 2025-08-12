@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import type { ThingDef, WeaponTraitDef } from '@/types/Defs'
+import type { TraitModule } from '@/types/Defs'
 import StatDisplay from './StatDisplay.vue'
-defineProps<{ module: ThingDef & WeaponTraitDef }>()
+defineProps<{ module: TraitModule }>()
 </script>
 
 <template>
   <section>
-    <h2>{{ module.modExtensions.li[0].part }} {{ module.defName }}</h2>
+    <h2>
+      <span class="italic">{{ module.modExtensions.li[0].part }}</span> {{ module.defName }}
+    </h2>
 
     <div class="main-view">
       <p>
@@ -48,5 +50,14 @@ h2 {
   background-color: #efefef;
   padding: 16px;
   border-radius: 4px;
+}
+
+p {
+  font-family: monospace;
+  font-weight: bold;
+
+  code {
+    font-weight: initial;
+  }
 }
 </style>

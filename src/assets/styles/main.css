@@ -1,12 +1,13 @@
 @import './base.css';
 
-
 #app {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
 
   max-width: 1080px;
   margin-inline: auto;
+}
+
+.italic {
+  font-style: italic;
 }

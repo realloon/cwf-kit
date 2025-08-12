@@ -9,6 +9,8 @@ export type Defs = {
   }
 }
 
+export type TraitModule = ThingDef & WeaponTraitDef
+
 export type ThingDef = {
   defName: string
   costList: Record<string, number>

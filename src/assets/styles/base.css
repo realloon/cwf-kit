@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding-inline: 16px;
   padding-block-end: 32px;
-  
+
   color: #333;
   line-height: 1;
 }
@@ -23,9 +23,19 @@ p {
   margin-block: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: unset;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 ul,
 ol {
   margin-block: unset;
+  padding-inline-start: 2em;
 }
 
 pre {

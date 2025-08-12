@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useModuleDB } from './helpers'
-import Module from './components/Module.vue'
+import type { TraitModule } from '@/types/Defs'
+import { computed, ref, onMounted } from 'vue'
 import { parts } from '@/types/Defs'
-const { moduleDB } = useModuleDB()
+import { Checkbox, IconFilter } from '@/components'
+import Module from './components/Module.vue'
+import { useModuleDB } from './helpers'
+
+const modules = ref<TraitModule[]>([])
+onMounted(async () => {
+  const { moduleDB } = await useModuleDB()
+  modules.value = moduleDB.value
+})
 
 const partsFilter = ref(parts)
 const filteredModules = computed(() =>
-  moduleDB.value.filter(module =>
+  modules.value.filter(module =>
     partsFilter.value.includes(module.modExtensions.li[0].part)
   )
 )
@@ -15,18 +22,16 @@ const filteredModules = computed(() =>
 
 <template>
   <main>
-    <!-- <h1>Modules</h1> -->
+    <h1 hidden>Modules</h1>
 
     <section class="part-filter">
-      <label v-for="part in parts">
-        <span>{{ part }}</span>
-        <input
-          v-model="partsFilter"
-          :value="part"
-          type="checkbox"
-          name="parts"
-        />
-      </label>
+      <IconFilter />
+      <Checkbox
+        v-for="part in parts"
+        v-model="partsFilter"
+        :label="part"
+        :value="part"
+      />
     </section>
 
     <section class="module-list">
@@ -43,12 +48,7 @@ main {
 .part-filter {
   display: flex;
   gap: 8px;
-  margin-block-end: 24px;
-
-  label {
-    display: flex;
-    align-items: center;
-  }
+  margin-block: 8px 16px;
 }
 
 .module-list {

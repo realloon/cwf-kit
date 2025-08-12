@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppHeader from './containers/AppHeader.vue'
+import { AppHeader } from './containers'
 </script>
 
 <template>
