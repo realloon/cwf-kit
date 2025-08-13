@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconEye } from '@/components'
+import { IconEye, IconSet } from '@/components'
 import FileButton from './FileButton.vue'
 import { Texture } from '@/modules/Texture'
 const { texture } = defineProps<{
@@ -11,33 +11,41 @@ const { texture } = defineProps<{
 <template>
   <form @submit.prevent>
     <header>
-      <FileButton :label="texture.name" :texture="texture" />
+      <div class="left">
+        <h3>{{ texture.name }}</h3>
+      </div>
 
-      <label style="display: flex; align-items: center">
-        <input
-          v-model="texture.shouldDisplay"
-          :disabled="!texture.src"
-          type="checkbox"
-          name="checkbox"
-          hidden
-        />
-        <IconEye />
-      </label>
-    </header>
+      <div class="right">
+        <FileButton :texture="texture" />
 
-    <div class="view">
-      <section :class="!isOffsetable && 'large'">
-        <label v-if="!isOffsetable">
+        <label style="display: flex; align-items: center; cursor: pointer">
+          <input
+            v-model="texture.shouldDisplay"
+            :disabled="!texture.src"
+            type="checkbox"
+            name="checkbox"
+            hidden
+          />
+          <IconEye />
+        </label>
+
+        <label
+          v-if="!isOffsetable"
+          style="display: flex; align-items: center; cursor: pointer"
+        >
           <input
             v-model="texture.isMasked"
             :disabled="!texture.src"
             type="checkbox"
             name="checkbox"
+            hidden
           />
-          <span>Mask</span>
+          <IconSet />
         </label>
-      </section>
+      </div>
+    </header>
 
+    <div class="view">
       <section
         v-if="isOffsetable"
         style="z-index: 10; display: flex; flex-direction: column"
@@ -88,7 +96,6 @@ const { texture } = defineProps<{
 form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 6px;
 
   padding: 8px;
@@ -98,7 +105,14 @@ form {
 header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 }
 
 h3 {
@@ -114,7 +128,6 @@ h3 {
 .view {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
 input[type='number'] {

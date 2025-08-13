@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { IconImage } from '@/components'
 import { Texture } from '@/modules/Texture'
-defineProps<{ label: string; texture: Texture }>()
+defineProps<{ texture: Texture }>()
 </script>
 
 <template>
   <label>
-    <span :style="!texture.src && 'opacity: 0.5;'">{{ label }}</span>
     <IconImage />
     <input @change="texture.update($event)" type="file" name="baseTex" hidden />
   </label>
