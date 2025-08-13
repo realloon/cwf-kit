@@ -28,6 +28,6 @@ function toggleFilter() {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-block: 8px 16px;
+  margin-block-end: 16px;
 }
 </style>
