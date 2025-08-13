@@ -1,23 +1,20 @@
 <script setup lang="ts">
 import TextureCanvas from './components/TextureCanvas.vue'
 import TexSet from './components/TexSet.vue'
-import { useOffsetStore } from '@/stores/offset'
-const store = useOffsetStore()
+import { useTexs } from './hooks/useTexs'
+
+const { backTex, partTexs } = useTexs()
 </script>
 
 <template>
   <main>
     <section class="left">
-      <TextureCanvas />
-      <TexSet style="width: 12rem;" :texture="store.backTex" is-minify />
+      <TextureCanvas :back-tex="backTex" :part-texs="partTexs" />
+      <TexSet style="width: 12rem" :texture="backTex" is-minify />
     </section>
 
     <section class="right">
-      <TexSet
-        v-for="partTex in store.partTexs"
-        :texture="partTex"
-        is-offsetable
-      />
+      <TexSet v-for="partTex in partTexs" :texture="partTex" is-offsetable />
     </section>
   </main>
 </template>

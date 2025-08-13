@@ -1,15 +1,26 @@
 <script setup lang="ts">
-import { useOffsetStore } from '@/stores/offset'
-const store = useOffsetStore()
+import { Texture } from '@/modules/Texture'
+defineProps<{ backTex: Texture; partTexs: Array<Texture> }>()
 </script>
 
 <template>
   <section class="canvas">
-    <img v-show="store.backTex.isDisplay" class="base" :class="store.backTex.isMasked && 'is-masked'"
-      :src="store.backTex.src" alt="">
+    <img
+      v-show="backTex.isDisplay"
+      class="base"
+      :class="backTex.isMasked && 'is-masked'"
+      :src="backTex.src"
+      alt=""
+    />
 
-    <template v-for="part in store.partTexs">
-      <img v-show="part.isDisplay" class="module" :style="part.style" :src="part.src" alt="">
+    <template v-for="part in partTexs">
+      <img
+        v-show="part.isDisplay"
+        class="module"
+        :style="part.style"
+        :src="part.src"
+        alt=""
+      />
     </template>
   </section>
 </template>
@@ -30,7 +41,6 @@ const store = useOffsetStore()
 .module {
   position: absolute;
 }
-
 
 .is-masked {
   opacity: 0.8;

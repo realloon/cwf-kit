@@ -1,4 +1,8 @@
-export function mergeObjArray(objArray: Array<Record<string, unknown[]>>) {
+import type { DefDatabase } from '@/types/Defs'
+
+export function mergeObjArray(
+  objArray: Array<Record<string, any>>
+): DefDatabase {
   return objArray.reduce((acc, cur) => {
     for (const key in cur) {
       if (Object.prototype.hasOwnProperty.call(cur, key)) {
