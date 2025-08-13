@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import { parts } from '@/types/Defs'
 import { Checkbox } from '@/components'
 import { IconFilter } from '@/components/icons'
-import LodeupButton from './components/LodeupButton.vue'
+import loadupButton from './components/loadupButton.vue'
 import Module from './components/Module.vue'
 import { useModules } from './hooks/useModules'
 
@@ -35,7 +35,7 @@ const filteredModules = computed(() =>
       <Module v-for="module in filteredModules" :module="module" />
     </section>
 
-    <LodeupButton :handle="loadXmlFiles" />
+    <loadupButton :handle="loadXmlFiles" />
   </main>
 </template>
 
