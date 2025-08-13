@@ -42,7 +42,7 @@ section {
 
 h2 {
   font-weight: bold;
-  font-family: monospace;
+  font-family: var(--font-mono);
   color: #333;
 }
 
@@ -57,7 +57,7 @@ h2 {
 }
 
 p {
-  font-family: monospace;
+  font-family: var(--font-mono);
 
   .key {
     font-weight: bold;

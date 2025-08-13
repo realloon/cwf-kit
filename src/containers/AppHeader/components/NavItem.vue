@@ -37,7 +37,7 @@ defineProps<{ name: string; to: string }>()
 
   span {
     font-size: 0.875rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
   &.router-link-active span {
     font-weight: bold;
