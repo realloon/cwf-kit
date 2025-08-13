@@ -16,7 +16,7 @@ defineProps<{ module: TraitModule }>()
         <span class="key">Label</span>:
         <code class="value">{{ module.label }}</code>
       </p>
-      <p>
+      <p style="line-height: 1.2">
         <span class="key">Description</span>:
         <code class="value">{{ module.description }}</code>
       </p>
