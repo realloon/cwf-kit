@@ -1,21 +1,26 @@
 <script setup lang="ts">
-import { IconEye, IconSet } from '@/components'
+import {
+  IconEye,
+  IconSet,
+  IconVertical,
+  IconHorizontal,
+} from '@/components/icons'
 import FileButton from './FileButton.vue'
 import { Texture } from '@/modules/Texture'
-const { texture } = defineProps<{
+const { texture, isMinify = false } = defineProps<{
   texture: Texture
-  isOffsetable?: boolean
+  isMinify?: boolean
 }>()
 </script>
 
 <template>
-  <form @submit.prevent>
+  <section class="tex-set">
     <header>
-      <div class="left">
+      <section class="left">
         <h3>{{ texture.name }}</h3>
-      </div>
+      </section>
 
-      <div class="right">
+      <section class="right">
         <FileButton :texture="texture" />
 
         <label style="display: flex; align-items: center; cursor: pointer">
@@ -29,10 +34,7 @@ const { texture } = defineProps<{
           <IconEye />
         </label>
 
-        <label
-          v-if="!isOffsetable"
-          style="display: flex; align-items: center; cursor: pointer"
-        >
+        <label style="display: flex; align-items: center; cursor: pointer">
           <input
             v-model="texture.isMasked"
             :disabled="!texture.src"
@@ -42,64 +44,61 @@ const { texture } = defineProps<{
           />
           <IconSet />
         </label>
-      </div>
+      </section>
     </header>
 
-    <div class="view">
-      <section
-        v-if="isOffsetable"
-        style="z-index: 10; display: flex; flex-direction: column"
-      >
-        <label>
-          <input
-            v-model="texture.x"
-            :disabled="!texture.src"
-            type="range"
-            min="-72"
-            max="320"
-            name="x"
-          />
-          <input
-            v-model="texture.x"
-            :disabled="!texture.src"
-            type="number"
-            min="-72"
-            max="320"
-            name="x"
-          />
-        </label>
+    <div v-if="!isMinify" class="offset-wrapper">
+      <label>
+        <IconHorizontal />
+        <input
+          v-model="texture.x"
+          :disabled="!texture.src"
+          type="range"
+          min="-72"
+          max="320"
+          name="x"
+        />
+        <input
+          v-model="texture.x"
+          :disabled="!texture.src"
+          type="number"
+          min="-72"
+          max="320"
+          name="x"
+        />
+      </label>
 
-        <label>
-          <input
-            v-model="texture.y"
-            :disabled="!texture.src"
-            type="range"
-            min="-72"
-            max="320"
-            name="y"
-          />
-          <input
-            v-model="texture.y"
-            :disabled="!texture.src"
-            type="number"
-            min="-72"
-            max="320"
-            name="y"
-          />
-        </label>
-      </section>
+      <label>
+        <IconVertical />
+        <input
+          v-model="texture.y"
+          :disabled="!texture.src"
+          type="range"
+          min="-72"
+          max="320"
+          name="y"
+        />
+        <input
+          v-model="texture.y"
+          :disabled="!texture.src"
+          type="number"
+          min="-72"
+          max="320"
+          name="y"
+        />
+      </label>
     </div>
-  </form>
+  </section>
 </template>
 
 <style scoped>
-form {
+.tex-set {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 
+  border: 1px solid gray;
   padding: 8px;
-  outline: 1px solid gray;
 }
 
 header {
@@ -113,31 +112,31 @@ header {
     align-items: center;
     gap: 8px;
   }
-}
 
-h3 {
-  font-weight: bold;
-  cursor: pointer;
-  opacity: 0.3;
+  h3 {
+    font-weight: bold;
+    opacity: 0.3;
 
-  &.is-active {
-    opacity: 1;
+    &.is-active {
+      opacity: 1;
+    }
   }
 }
 
-.view {
+.offset-wrapper {
   display: flex;
-  align-items: center;
-}
+  flex-direction: column;
+  gap: 4px;
 
-input[type='number'] {
-  width: 5ch;
-  font-family: monospace;
-}
+  label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 
-.large {
-  width: 320px;
-  display: flex;
-  gap: 12px;
+    input[type='number'] {
+      width: 5ch;
+      font-family: monospace;
+    }
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconImage } from '@/components'
+import { IconImage } from '@/components/icons'
 import { Texture } from '@/modules/Texture'
 defineProps<{ texture: Texture }>()
 </script>

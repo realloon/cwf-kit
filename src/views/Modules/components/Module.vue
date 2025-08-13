@@ -25,21 +25,9 @@ defineProps<{ module: TraitModule }>()
         <code class="value">{{ module.statBases.WorkToMake }}</code>
       </p>
 
-      <StatDisplay
-        v-if="module.costList"
-        label="CostList"
-        :code="module.costList"
-      />
-      <StatDisplay
-        v-if="module.statOffsets"
-        label="StatOffsets"
-        :code="module.statOffsets"
-      />
-      <StatDisplay
-        v-if="module.statFactors"
-        label="StatFactors"
-        :code="module.statFactors"
-      />
+      <StatDisplay label="CostList" :code="module.costList" />
+      <StatDisplay label="StatOffsets" :code="module.statOffsets" />
+      <StatDisplay label="StatFactors" :code="module.statFactors" />
       <!-- <pre>{{ module }}</pre> -->
     </div>
   </section>

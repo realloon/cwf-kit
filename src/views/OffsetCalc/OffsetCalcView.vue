@@ -7,15 +7,17 @@ const store = useOffsetStore()
 
 <template>
   <main>
-    <section class="left-view">
+    <section class="left">
       <TextureCanvas />
-      <TexSet :texture="store.backTex" />
+      <TexSet style="width: 12rem;" :texture="store.backTex" is-minify />
     </section>
 
-    <section class="right-view">
-      <template v-for="partTex in store.partTexs">
-        <TexSet :texture="partTex" is-offsetable />
-      </template>
+    <section class="right">
+      <TexSet
+        v-for="partTex in store.partTexs"
+        :texture="partTex"
+        is-offsetable
+      />
     </section>
   </main>
 </template>
@@ -27,16 +29,17 @@ main {
   gap: 24px;
 }
 
-.left-view {
+.left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
 }
 
-.right-view {
+.right {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   gap: 12px;
 }
 </style>

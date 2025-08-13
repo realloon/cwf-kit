@@ -13,9 +13,8 @@ article {
 }
 
 article:deep(h1) {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
-  color: #27a6ba;
 }
 
 article:deep(h2) {

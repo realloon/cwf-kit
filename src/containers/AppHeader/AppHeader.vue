@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { IconDev, IconList, IconTexture } from '@/components'
+import { IconDev, IconBook, IconList, IconTexture } from '@/components/icons'
 import NavItem from './components/NavItem.vue'
 </script>
 
 <template>
   <header>
     <section class="left">
-      <h1><router-link to="/">CustomizeWeapon DevKit</router-link></h1>
+      <h1><router-link to="/">CustomizeWeapon</router-link></h1>
       <IconDev class="dev-icon" />
     </section>
 
     <section class="right">
       <ul>
+        <li>
+          <NavItem name="Guide" to="/guide"><IconBook /></NavItem>
+        </li>
         <li>
           <NavItem name="Modules" to="/modules">
             <IconList style="transform: scale(1.1)" />
@@ -54,7 +57,7 @@ h1 {
 
 ul {
   display: flex;
-  gap: 8px;
+  gap: 2px;
 
   list-style: none;
   padding-inline-start: 0;

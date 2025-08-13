@@ -1,5 +1,3 @@
-# CustomizeWeapon
-
 CustomizeWeapon 为全面定制武器提供框架级支持，并内置原版及 DLC 武器的原生支持。
 
 ## 注意

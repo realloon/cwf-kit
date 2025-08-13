@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '@/views/Home/HomeView.vue'
-import OffsetCalcView from '@/views/OffsetCalc/OffsetCalcView.vue'
+import GuideView from '@/views/Guide/GuideView.vue'
 import ModulesView from '@/views/Modules/ModulesView.vue'
+import OffsetCalcView from '@/views/OffsetCalc/OffsetCalcView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,14 +14,19 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/offset-calc',
-      name: 'offset-calc',
-      component: OffsetCalcView,
+      path: '/guide',
+      name: 'guide',
+      component: GuideView,
     },
     {
       path: '/modules',
       name: 'modules',
       component: ModulesView,
+    },
+    {
+      path: '/offset-calc',
+      name: 'offset-calc',
+      component: OffsetCalcView,
     },
   ],
 })

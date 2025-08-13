@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { TraitModule } from '@/types/Defs'
 import { computed, ref } from 'vue'
 import { parts } from '@/types/Defs'
-import { Checkbox, IconFilter } from '@/components'
+import { Checkbox } from '@/components'
+import { IconFilter } from '@/components/icons'
+import LodeupButton from './components/LodeupButton.vue'
 import Module from './components/Module.vue'
 import { useModules } from './hooks/useModules'
 
@@ -20,8 +21,6 @@ const filteredModules = computed(() =>
   <main>
     <h1 hidden>Modules</h1>
 
-    <button @click="loadXmlFiles">Click me</button>
-
     <section class="part-filter">
       <IconFilter />
       <Checkbox
@@ -35,6 +34,8 @@ const filteredModules = computed(() =>
     <section class="module-list">
       <Module v-for="module in filteredModules" :module="module" />
     </section>
+
+    <LodeupButton :handle="loadXmlFiles" />
   </main>
 </template>
 
