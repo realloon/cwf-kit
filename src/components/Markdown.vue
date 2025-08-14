@@ -4,7 +4,7 @@ defineProps<{ markdown: string }>()
 </script>
 
 <template>
-  <article v-html="parse(markdown)" />
+  <article class="markdown" v-html="parse(markdown)" />
 </template>
 
 <style scoped>

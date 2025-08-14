@@ -1,4 +1,4 @@
-export { default as IconFilter } from './IconFilter.vue'
+export { default as IconFilterOutline } from './IconFilterOutline.vue'
 export { default as IconDev } from './IconDev.vue'
 export { default as IconList } from './IconList.vue'
 export { default as IconTexture } from './IconTexture.vue'

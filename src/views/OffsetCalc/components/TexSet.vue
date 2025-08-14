@@ -135,7 +135,7 @@ header {
 
     input[type='number'] {
       width: 5ch;
-      font-family: monospace;
+      font-family: var(--font-mono);
     }
   }
 }

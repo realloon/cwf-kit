@@ -1,15 +1,14 @@
 <script setup lang="ts">
+import { parts, type Part } from '@/types/Defs'
 import { computed, ref } from 'vue'
-import { parts } from '@/types/Defs'
-import { Checkbox } from '@/components'
-import { IconFilter } from '@/components/icons'
-import loadupButton from './components/loadupButton.vue'
+import PartFilter from './components/PartFilter.vue'
 import Module from './components/Module.vue'
+import LoadupButton from './components/LoadupButton.vue'
 import { useModules } from './hooks/useModules'
 
 const { loadXmlFiles, isLoaded, traitModules } = useModules()
 
-const filter = ref(parts)
+const filter = ref<readonly Part[]>(parts)
 const filteredModules = computed(() =>
   traitModules.value.filter(module =>
     filter.value.includes(module.modExtensions.li[0].part)
@@ -31,24 +30,19 @@ const filteredModules = computed(() =>
         :disabled="!isLoaded"
       />
     </section>
+    <PartFilter v-model="filter" />
 
     <section class="module-list">
       <Module v-for="module in filteredModules" :module="module" />
     </section>
 
-    <loadupButton :handle="loadXmlFiles" />
+    <LoadupButton :handle="loadXmlFiles" />
   </main>
 </template>
 
 <style scoped>
 main {
   width: 100%;
-}
-
-.part-filter {
-  display: flex;
-  gap: 8px;
-  margin-block: 8px 16px;
 }
 
 .module-list {

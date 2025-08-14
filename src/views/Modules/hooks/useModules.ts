@@ -13,16 +13,13 @@ async function loadXmlFiles() {
     isLoaded.value = false
 
     const dirHandle = await showDirectoryPicker()
-    console.time('timer')
     const xmlHandles = await getAllHandles(dirHandle, '.xml')
-    console.timeLog('timer', '已获取文件句柄')
 
     defsArray = await Promise.all(
       xmlHandles.map(async handle =>
         parser.parse(await (await handle.getFile()).text())
       )
     )
-    console.timeLog('timer', '已读取并解析文件')
 
     isLoaded.value = true
   } catch (error) {
@@ -34,8 +31,11 @@ async function loadXmlFiles() {
   }
 
   const internalDefs = defsArray.map(d => d.Defs)
-  const defDatabase = mergeObjArray(internalDefs) as unknown as DefDatabase
+  const defDatabase = mergeObjArray(internalDefs)
   const { ThingDef, WeaponTraitDef } = defDatabase
+  if (!ThingDef || !WeaponTraitDef) {
+    return console.error('No modules or traits in fold.')
+  }
 
   const thingDefs = ThingDef.filter(
     t => t.defName && t['@_ParentName'] === 'CWF_TraitModule'
@@ -43,8 +43,6 @@ async function loadXmlFiles() {
   const weaponTraitDefs = WeaponTraitDef.filter(w => w.defName)
 
   traitModules.value = buildTraitModules(thingDefs, weaponTraitDefs)
-  console.timeLog('timer', '已构建模块数据库')
-  console.timeEnd('timer')
 }
 
 export function useModules() {

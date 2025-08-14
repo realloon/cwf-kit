@@ -1,7 +1,7 @@
-export interface DefDatabase {
+export type DefDatabase = Partial<{
   ThingDef: Array<ThingDef>
   WeaponTraitDef: Array<WeaponTraitDef>
-}
+}>
 
 export type Defs = {
   '?xml': {
