@@ -28,6 +28,7 @@ const filteredModules = computed(() =>
         v-model="filter"
         :label="part"
         :value="part"
+        :disabled="!isLoaded"
       />
     </section>
 

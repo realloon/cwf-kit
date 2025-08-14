@@ -10,6 +10,7 @@ defineProps<{ markdown: string }>()
 <style scoped>
 article {
   line-height: 1.5;
+  font-family: 'LXGW Wenkai', sans-serif;
 }
 
 article:deep(h1) {
