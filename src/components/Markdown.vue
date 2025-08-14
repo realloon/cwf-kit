@@ -20,9 +20,9 @@ onMounted(() => {
 
   const titles = article.querySelectorAll('h2')
   titles.forEach(title => {
-    title.id = title.textContent
+    title.id = title.textContent ?? ''
     toc.value.push({
-      title: title.textContent,
+      title: title.textContent ?? '',
       target: title,
     })
   })
