@@ -12,8 +12,6 @@
 - 代码仓库：[Github](https://github.com/realloon/CustomizeWeaponFramework)
 - 抢先体验：[创意工坊（非公开发布）](https://steamcommunity.com/sharedfiles/filedetails/?id=3537051503)，若遇到任何问题，请与我联系！
 
-恳请您不要直接传播上述创意工坊地址，至少，请直接发送本页面。
-
 ## 许可
 
 CustomizeWeapon 项目采用**双重协议**许可，请须知：
