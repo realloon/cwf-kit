@@ -20,16 +20,6 @@ const filteredModules = computed(() =>
   <main>
     <h1 hidden>Modules</h1>
 
-    <section class="part-filter">
-      <IconFilter />
-      <Checkbox
-        v-for="part in parts"
-        v-model="filter"
-        :label="part"
-        :value="part"
-        :disabled="!isLoaded"
-      />
-    </section>
     <PartFilter v-model="filter" />
 
     <section class="module-list">

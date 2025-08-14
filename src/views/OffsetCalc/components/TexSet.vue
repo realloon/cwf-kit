@@ -87,6 +87,14 @@ const { texture, isMinify = false } = defineProps<{
           name="y"
         />
       </label>
+
+      <!-- <label>
+        <input type="number" :disabled="!texture.src" />
+      </label> -->
+
+      <!-- <label>
+        <input type="number" :disabled="!texture.src" />
+      </label> -->
     </div>
   </section>
 </template>
@@ -97,8 +105,10 @@ const { texture, isMinify = false } = defineProps<{
   flex-direction: column;
   gap: 4px;
 
-  border: 1px solid gray;
-  padding: 8px;
+  padding: 12px;
+  border: 1px solid #edf2fa;
+  background-color: #fff;
+  border-radius: 4px;
 }
 
 header {

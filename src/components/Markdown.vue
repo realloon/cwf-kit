@@ -26,6 +26,8 @@ onMounted(() => {
       target: title,
     })
   })
+
+  // TODO
 })
 </script>
 
@@ -68,11 +70,19 @@ article:deep() {
 
   p {
     margin-block-end: 0.5rem;
+
+    code {
+      font-style: italic;
+    }
   }
 
   ul,
   ol {
     padding-inline-start: 2rem;
+  }
+
+  pre {
+    background-color: #fff;
   }
 }
 

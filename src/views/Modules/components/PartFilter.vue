@@ -26,8 +26,10 @@ function toggleFilter() {
 <style scoped>
 .filter {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+
   margin-block-end: 16px;
 }
 </style>

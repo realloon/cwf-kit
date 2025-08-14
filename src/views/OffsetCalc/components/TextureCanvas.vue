@@ -29,7 +29,7 @@ defineProps<{ backTex: Texture; partTexs: Array<Texture> }>()
 .canvas {
   width: 512px;
   height: 512px;
-  outline: 2px dashed gray;
+  border: 2px dashed gray;
   position: relative;
 }
 
