@@ -4,7 +4,7 @@ import { Markdown } from '@/components'
 </script>
 
 <template>
-  <Markdown :markdown="guide" />
+  <Markdown :markdown="guide" has-toc />
 </template>
 
 <style scoped></style>

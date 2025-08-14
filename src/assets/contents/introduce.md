@@ -1,4 +1,4 @@
-CustomizeWeapon 为全面定制武器提供框架级支持，并内置原版及 DLC 武器的原生支持。
+**`CustomizeWeaponFramework`：渐进式定制武器拓展框架**
 
 ## 注意
 
