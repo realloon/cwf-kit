@@ -32,11 +32,16 @@ import NavItem from './components/NavItem.vue'
 
 <style scoped>
 header {
-  height: 48px;
+  position: sticky;
+  top: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  height: 48px;
   margin-block-end: 8px;
+  background-color: white;
 }
 
 .left,

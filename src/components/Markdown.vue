@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef, onMounted } from 'vue'
+import { ref, useTemplateRef, onMounted, onUnmounted, nextTick } from 'vue'
 import { parse } from 'marked'
 import { codeToHtml } from 'shiki'
 
@@ -9,52 +9,96 @@ const { markdown, hasToc = false } = defineProps<{
 }>()
 
 interface Title {
+  id: string
   title: string
   target: HTMLHeadingElement
 }
 
-// const articleRef = useTemplateRef('article')
-// const toc = ref<Title[]>([])
+const html = ref('')
+const articleRef = useTemplateRef('article')
+const toc = ref<Title[]>([])
+const activeTitleId = ref('')
 
-const doc = document.createElement('article')
-doc.innerHTML = parse(markdown, { async: false })
-const codes = doc.querySelectorAll('pre > code')
-codes.forEach(async code => {
-  code.innerHTML = await codeToHtml(code.innerHTML, {
-    lang: 'xml',
-    theme: 'min-light',
+let observer: IntersectionObserver | null = null
+
+onMounted(async () => {
+  const doc = document.createElement('article')
+  doc.innerHTML = await parse(markdown)
+
+  const pres = doc.querySelectorAll('pre')
+
+  await Promise.all(
+    Array.from(pres).map(async pre => {
+      const codeEl = pre.querySelector('code')
+      if (!codeEl) return
+
+      const lang = codeEl.classList.value.replace('language-', '') || 'txt'
+      const code = codeEl.textContent ?? ''
+
+      pre.outerHTML = await codeToHtml(code, {
+        lang,
+        theme: 'min-light',
+      })
+    })
+  )
+
+  html.value = doc.innerHTML
+
+  await nextTick()
+
+  const article = articleRef.value
+  if (!article) return
+  const titles = article.querySelectorAll('h2')
+
+  const observerCallback: IntersectionObserverCallback = entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        activeTitleId.value = entry.target.id
+      }
+    })
+  }
+
+  const observerOptions: IntersectionObserverInit = {
+    root: null,
+    rootMargin: '-49px 0px -90% 0px',
+    threshold: 0,
+  }
+
+  observer = new IntersectionObserver(observerCallback, observerOptions)
+
+  titles.forEach(title => {
+    const id = title.textContent
+    title.id = id
+
+    toc.value.push({
+      id,
+      title: id,
+      target: title,
+    })
+
+    observer?.observe(title)
   })
 })
 
-// onMounted(() => {
-//   const article = articleRef.value
-//   if (!article) return
-
-//   const titles = article.querySelectorAll('h2')
-//   titles.forEach(title => {
-//     if (!title.textContent) return
-//     title.id = title.textContent
-//     toc.value.push({
-//       title: title.textContent,
-//       target: title,
-//     })
-//   })
-// })
+onUnmounted(() => {
+  if (observer) observer.disconnect()
+})
 </script>
 
 <template>
   <article class="markdown">
-    <section v-html="doc.innerHTML" ref="article"></section>
+    <section v-html="html" ref="article"></section>
     <aside class="toc" v-if="hasToc">
       <h2>Content</h2>
-      <!-- <ul>
+      <ul>
         <li
           v-for="title in toc"
           @click="title.target.scrollIntoView({ behavior: 'smooth' })"
+          :class="activeTitleId === title.id && 'is-active'"
         >
           {{ title.title }}
         </li>
-      </ul> -->
+      </ul>
     </aside>
   </article>
 </template>
@@ -77,6 +121,7 @@ article:deep() {
 
   h2 {
     font-weight: bold;
+    scroll-margin-top: 49px; 
   }
 
   p {
@@ -99,24 +144,34 @@ article:deep() {
 
 .toc {
   position: sticky;
-  top: 16px;
+  top: 57px;
   flex-shrink: 0;
   flex-basis: 14rem;
 
   ul {
     padding-inline-start: 0;
     list-style-type: none;
+
+    &:where(:hover li) {
+      color: var(--color-font);
+    }
   }
 
   li {
-    font-weight: bold;
-    padding-block: 0.2em;
+    color: gray;
+    font-size: 0.875rem;
+    padding: 0.5em 1em;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.2s;
 
+    &.is-active {
+      color: var(--color-font);
+      background-color: #efefef;
+    }
+
     &:hover {
-      text-decoration: underline;
+      color: #0769da;
     }
   }
 }
