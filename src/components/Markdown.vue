@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, useTemplateRef, onMounted } from 'vue'
 import { parse } from 'marked'
+import { codeToHtml } from 'shiki'
+
 const { markdown, hasToc = false } = defineProps<{
   markdown: string
   hasToc?: boolean
@@ -11,39 +13,48 @@ interface Title {
   target: HTMLHeadingElement
 }
 
-const articleRef = useTemplateRef('article')
-const toc = ref<Title[]>([])
+// const articleRef = useTemplateRef('article')
+// const toc = ref<Title[]>([])
 
-onMounted(() => {
-  const article = articleRef.value
-  if (!article) return
-
-  const titles = article.querySelectorAll('h2')
-  titles.forEach(title => {
-    title.id = title.textContent ?? ''
-    toc.value.push({
-      title: title.textContent ?? '',
-      target: title,
-    })
+const doc = document.createElement('article')
+doc.innerHTML = parse(markdown, { async: false })
+const codes = doc.querySelectorAll('pre > code')
+codes.forEach(async code => {
+  code.innerHTML = await codeToHtml(code.innerHTML, {
+    lang: 'xml',
+    theme: 'min-light',
   })
-
-  // TODO
 })
+
+// onMounted(() => {
+//   const article = articleRef.value
+//   if (!article) return
+
+//   const titles = article.querySelectorAll('h2')
+//   titles.forEach(title => {
+//     if (!title.textContent) return
+//     title.id = title.textContent
+//     toc.value.push({
+//       title: title.textContent,
+//       target: title,
+//     })
+//   })
+// })
 </script>
 
 <template>
   <article class="markdown">
-    <section v-html="parse(markdown)" ref="article"></section>
+    <section v-html="doc.innerHTML" ref="article"></section>
     <aside class="toc" v-if="hasToc">
       <h2>Content</h2>
-      <ul>
+      <!-- <ul>
         <li
           v-for="title in toc"
           @click="title.target.scrollIntoView({ behavior: 'smooth' })"
         >
           {{ title.title }}
         </li>
-      </ul>
+      </ul> -->
     </aside>
   </article>
 </template>
