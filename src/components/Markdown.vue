@@ -48,7 +48,6 @@ onMounted(async () => {
 
   const article = articleRef.value
   if (!article) return
-  const titles = article.querySelectorAll('h2')
 
   const observerCallback: IntersectionObserverCallback = entries => {
     entries.forEach(entry => {
@@ -65,9 +64,10 @@ onMounted(async () => {
   }
 
   observer = new IntersectionObserver(observerCallback, observerOptions)
+  const titles = article.querySelectorAll('h2')
 
   titles.forEach(title => {
-    const id = title.textContent
+    const id = title.textContent ?? ''
     title.id = id
 
     toc.value.push({
@@ -121,7 +121,7 @@ article:deep() {
 
   h2 {
     font-weight: bold;
-    scroll-margin-top: 49px; 
+    scroll-margin-top: 49px;
   }
 
   p {
