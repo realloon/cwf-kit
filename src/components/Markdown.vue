@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, useTemplateRef, onMounted, onUnmounted, nextTick } from 'vue'
 import { parse } from 'marked'
 import { codeToHtml } from 'shiki'
 

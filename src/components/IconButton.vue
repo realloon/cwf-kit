@@ -1,7 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <button class="icon-btn"><slot /></button>
+  <button class="icon-btn">
+    <slot />
+  </button>
 </template>
 
 <style scoped>
@@ -16,9 +18,10 @@
   border: none;
   border-radius: 4px;
   background-color: #f0f0f0;
+  cursor: pointer;
 }
 
-.icon-btn:not(:disabled) {
-  cursor: pointer;
+.icon-btn:disabled {
+  cursor: unset;
 }
 </style>

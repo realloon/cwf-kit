@@ -1,4 +1,4 @@
-import type { DefDatabase } from '@/types/Defs'
+import type { DefDatabase } from '@/types'
 
 export function mergeObjArray(
   objArray: Array<Record<string, any>>

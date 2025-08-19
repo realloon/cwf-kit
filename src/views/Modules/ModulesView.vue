@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { parts, type Part } from '@/types/Defs'
-import { computed, ref } from 'vue'
+import { parts, type Part } from '@/types'
 import PartFilter from './components/PartFilter.vue'
 import Module from './components/Module.vue'
 import LoadupButton from './components/LoadupButton.vue'

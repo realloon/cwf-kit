@@ -1,4 +1,4 @@
-import type { ThingDef, WeaponTraitDef, TraitModule } from '@/types/Defs'
+import type { ThingDef, WeaponTraitDef, TraitModule } from '@/types'
 
 export function buildTraitModules(
   modules: Array<ThingDef>,

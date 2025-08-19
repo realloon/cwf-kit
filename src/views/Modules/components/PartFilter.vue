@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { parts, type Part } from '@/types/Defs'
+import { parts, type Part } from '@/types'
 import { Checkbox } from '@/components'
 import { IconFilterOutline } from '@/components/icons'
 

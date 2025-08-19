@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { CodeBlock } from '@/components'
 const { code } = defineProps<{ label: string; code: unknown }>()
 
