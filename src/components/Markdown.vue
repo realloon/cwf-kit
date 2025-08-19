@@ -136,6 +136,12 @@ article:deep() {
     padding-inline-start: 2rem;
   }
 
+  blockquote {
+    margin: 0;
+    padding-inline-start: calc(1em - 4px);
+    border-inline-start: 4px solid #efefef;
+  }
+
   pre {
     background-color: #fff;
   }

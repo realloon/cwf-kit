@@ -36,27 +36,27 @@ For most modded weapons, you can often skip directly to step 3.
 
 ## FAQ
 
-> How is the compatibility?
+> <b>How is the compatibility?</b>
 
 Excellent! It is theoretically compatible with the vast majority of mods.
 
-> Does it support weapons from other mods?
+> <b>Does it support weapons from other mods?</b>
 
 Yes, it only requires a simple patch from the mod author.
 
-> Does it support the unique weapons from the Odyssey DLC?
+> <b>Does it support the unique weapons from the Odyssey DLC?</b>
 
 Support will be added in a future update.
 
-> Is it compatible with Combat Extended?
+> <b>Is it compatible with Combat Extended?</b>
 
 It is not compatible at this time.
 
-> Can I add it to an existing save?
+> <b>Can I add it to an existing save?</b>
 
 Yes, but as the mod is under active development, it is not recommended for critical playthroughs just yet.
 
-> Can I remove it from an existing save?
+> <b>Can I remove it from an existing save?</b>
 
 Yes. If you encounter any issues, please report them to me.
 
@@ -65,7 +65,7 @@ Yes. If you encounter any issues, please report them to me.
 This mod is still under active development. The following non-critical issues will be addressed in future updates:
 
 1. Some modules may have unbalanced stats or misaligned graphics.
-Reloadable modules like grenade launchers will have their ammo count reset after the weapon is reloaded.
+   Reloadable modules like grenade launchers will have their ammo count reset after the weapon is reloaded.
 2. If you see the message "No available modules in inventory", your colonist needs to pick up the module first. Subscribing to a mod like Pick Up And Haul is recommended.
 3. When modifying a weapon lying on the ground, opening the menu again mid-progress may cause errors. Please wait for the current task to complete before issuing new orders.
 

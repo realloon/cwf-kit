@@ -3,7 +3,14 @@ import introduce from '@/assets/contents/introduce.md?raw'
 </script>
 
 <template>
-  <Markdown :markdown="introduce" />
+  <main>
+    <Markdown :markdown="introduce" />
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+</style>

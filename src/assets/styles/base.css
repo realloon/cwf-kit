@@ -7,9 +7,8 @@
   --color-font: #333;
   --color-page: #fcfcfc;
 
-  --font-sans: ui-sans-serif, sans-serif;
-  --font-mono: 'Menlo', 'Monaco', 'Cascadia Code', 'Consolas', ui-monospace,
-    monospace;
+  --font-sans: 'Segoe UI', ui-sans-serif, sans-serif, sans-serif;
+  --font-mono: 'Monaco', 'Cascadia Code', 'Consolas', ui-monospace, monospace;
 }
 
 body {
@@ -21,7 +20,7 @@ body {
 
   margin: 0;
   padding-inline: 16px;
-  padding-block-end: 32px;
+  padding-block-end: 48px;
 }
 
 h1,

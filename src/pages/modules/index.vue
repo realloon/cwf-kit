@@ -31,7 +31,8 @@ const filteredModules = computed(() =>
 
 <style scoped>
 main {
-  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
 }
 
 .module-list {

@@ -31,6 +31,9 @@ import NavItem from './components/NavItem.vue'
 
 <style scoped>
 header {
+  width: min(1080px, 100%);
+  margin-inline: auto;
+
   position: sticky;
   top: 0;
 

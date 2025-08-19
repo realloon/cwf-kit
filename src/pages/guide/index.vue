@@ -3,7 +3,14 @@ import guide from '@/assets/contents/guide.md?raw'
 </script>
 
 <template>
-  <Markdown :markdown="guide" has-toc />
+  <main>
+    <Markdown :markdown="guide" has-toc />
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+</style>

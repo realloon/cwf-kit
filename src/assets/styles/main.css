@@ -4,9 +4,6 @@
 #app {
   display: flex;
   flex-direction: column;
-
-  max-width: 1080px;
-  margin-inline: auto;
 }
 
 .italic {
