@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  IconEye,
-  IconVertical,
-  IconHorizontal,
-  IconEyeClose,
-} from '@/components/icons'
 import { Texture } from '@/modules/Texture'
 import FileButton from './FileButton.vue'
 import ToggleButton from './ToggleButton.vue'

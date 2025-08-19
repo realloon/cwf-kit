@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { parts, type Part } from '@/types'
-import { Checkbox } from '@/components'
-import { IconFilterOutline } from '@/components/icons'
 
 const model = defineModel<readonly Part[]>({ required: true })
 

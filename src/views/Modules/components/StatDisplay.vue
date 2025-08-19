@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { CodeBlock } from '@/components'
 const { code } = defineProps<{ label: string; code: unknown }>()
 
 const json = computed(() => JSON.stringify(code, null, 2))

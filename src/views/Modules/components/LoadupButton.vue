@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { IconUpload } from '@/components/icons'
 defineProps<{ handle: () => void }>()
 </script>
 

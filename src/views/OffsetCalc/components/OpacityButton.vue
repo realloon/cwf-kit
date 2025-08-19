@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { IconButton } from '@/components'
-import { IconOpacity } from '@/components/icons'
-
 const model = defineModel<boolean>({ required: true })
 </script>
 

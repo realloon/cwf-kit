@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { IconButton } from '@/components'
 const model = defineModel<boolean>({ required: true })
 </script>
 
