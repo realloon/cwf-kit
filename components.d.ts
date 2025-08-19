@@ -8,10 +8,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Book: typeof import('./src/components/icon/Book.vue')['default']
     Checkbox: typeof import('./src/components/Checkbox.vue')['default']
     CodeBlock: typeof import('./src/components/CodeBlock.vue')['default']
-    Dev: typeof import('./src/components/icon/Dev.vue')['default']
     IconBook: typeof import('./src/components/icon/IconBook.vue')['default']
     IconButton: typeof import('./src/components/IconButton.vue')['default']
     IconDev: typeof import('./src/components/icon/IconDev.vue')['default']

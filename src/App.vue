@@ -5,5 +5,5 @@ import { AppHeader } from './containers'
 <template>
   <app-header />
 
-  <router-view />
+  <router-view /> 
 </template>

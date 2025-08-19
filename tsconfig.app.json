@@ -5,7 +5,7 @@
     "src/**/*",
     "src/**/*.vue",
     "auto-imports.d.ts",
-    "components.d.ts"
+    "components.d.ts",
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
@@ -16,7 +16,5 @@
     },
 
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-
-    "types": ["vite/client", "wicg-file-system-access"]
   }
 }
