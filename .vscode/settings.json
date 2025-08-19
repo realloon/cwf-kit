@@ -1,0 +1,8 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts, auto-imports.d.ts, components.d.ts, typed-router.d.ts",
+    "vite.config.*": "vitest.config.*",
+    "package.json": "bun.lock"
+  }
+}
