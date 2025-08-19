@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import {
   IconEye,
-  IconSet,
   IconVertical,
   IconHorizontal,
+  IconEyeClose,
 } from '@/components/icons'
-import FileButton from './FileButton.vue'
 import { Texture } from '@/modules/Texture'
+import FileButton from './FileButton.vue'
+import ToggleButton from './ToggleButton.vue'
+import OpacityButton from './OpacityButton.vue'
+
 const { texture, isMinify = false } = defineProps<{
   texture: Texture
   isMinify?: boolean
@@ -15,37 +18,26 @@ const { texture, isMinify = false } = defineProps<{
 
 <template>
   <section class="tex-set">
-    <header>
-      <section class="left">
-        <h3>{{ texture.name }}</h3>
-      </section>
+    <h3>{{ texture.name }}</h3>
 
-      <section class="right">
-        <FileButton :texture="texture" />
+    <div class="btns-wrappre">
+      <FileButton :texture="texture" />
 
-        <label style="display: flex; align-items: center; cursor: pointer">
-          <input
-            v-model="texture.shouldDisplay"
-            :disabled="!texture.src"
-            type="checkbox"
-            name="checkbox"
-            hidden
-          />
+      <ToggleButton v-model="texture.shouldDisplay" :disabled="!texture.src">
+        <template #open>
           <IconEye />
-        </label>
+        </template>
+        <template #close>
+          <IconEyeClose />
+        </template>
+      </ToggleButton>
 
-        <label style="display: flex; align-items: center; cursor: pointer">
-          <input
-            v-model="texture.isMasked"
-            :disabled="!texture.src"
-            type="checkbox"
-            name="checkbox"
-            hidden
-          />
-          <IconSet />
-        </label>
-      </section>
-    </header>
+      <OpacityButton
+        v-if="isMinify"
+        v-model="texture.isMasked"
+        :disabled="!texture.src"
+      />
+    </div>
 
     <div v-if="!isMinify" class="offset-wrapper">
       <label>
@@ -109,28 +101,21 @@ const { texture, isMinify = false } = defineProps<{
   border: 1px solid #edf2fa;
   background-color: #fff;
   border-radius: 4px;
+
+  z-index: 1;
 }
 
-header {
+h3 {
+  transform: translateY(-4px);
+  font-family: var(--font-mono);
+  font-weight: bold;
+  color: gray;
+}
+
+.btns-wrappre {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  .left,
-  .right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  h3 {
-    font-weight: bold;
-    opacity: 0.3;
-
-    &.is-active {
-      opacity: 1;
-    }
-  }
+  gap: 8px;
 }
 
 .offset-wrapper {

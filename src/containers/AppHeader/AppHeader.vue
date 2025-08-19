@@ -41,7 +41,7 @@ header {
 
   height: 48px;
   margin-block-end: 8px;
-  background-color: white;
+  background-color: var(--color-page);
 }
 
 .left,

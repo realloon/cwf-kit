@@ -6,8 +6,9 @@
   --color-font: #333;
   --color-page: #fcfcfc;
 
-  --font-sans: sans-serif;
-  --font-mono: monospace;
+  --font-sans: ui-sans-serif, sans-serif;
+  --font-mono: 'Menlo', 'Monaco', 'Cascadia Code', 'Consolas', ui-monospace,
+    monospace;
 }
 
 body {
