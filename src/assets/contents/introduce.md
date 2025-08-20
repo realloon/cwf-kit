@@ -1,4 +1,4 @@
-<b>Customizable Weapons</b>: The Progressive Customize Weapon Framework
+<b>The Progressive Customize Weapon Framework</b>
 
 Instead of crafting a dozen single-purpose weapons, why not unlock the full potential of one? This mod provides comprehensive support for weapon modification!
 

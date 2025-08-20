@@ -139,6 +139,10 @@ article:deep() {
   ul,
   ol {
     padding-inline-start: 2rem;
+    
+    li::marker {
+      font-family: var(--font-mono);
+    }
   }
 
   blockquote {
