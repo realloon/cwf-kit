@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Texture } from '@/modules/Texture'
 import FileButton from './FileButton.vue'
 import ToggleButton from './ToggleButton.vue'
 import OpacityButton from './OpacityButton.vue'
