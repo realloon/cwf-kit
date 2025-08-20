@@ -114,13 +114,18 @@ article {
 
 article:deep() {
   h1 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
   h2 {
+    font-size: 1.25rem;
     font-weight: bold;
     scroll-margin-top: 49px;
+  }
+
+  h3 {
+    font-weight: bold;
   }
 
   p {
@@ -144,6 +149,11 @@ article:deep() {
 
   pre {
     background-color: #fff;
+    margin-block-end: 0.5rem;
+  }
+
+  a {
+    color: #0e0ebd;
   }
 }
 

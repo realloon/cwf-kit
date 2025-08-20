@@ -1,14 +1,6 @@
 # 模组适配指南
 
-<b>CustomizeWeapon</b> 为定制武器提供全面支持，并内置对原版武器的全面支持。如果您是模组作者，想为模组添加本框架所提供的特性，阅读本文将会有很大帮助。
-
-## 渐进式增强
-
-三方模组进行适配时，无需一开始就支持全部特性，而是随开发按需引入，这被称为渐进式增强。
-
-例如，添加 `DynamicTraits`，武器将支持 `WeaponTraitDef` 集合，可动态增删词条；添加 `DynamicGraphic`，将响应动态贴图变化。
-
-如果您想为武器添加模块功能，又暂未准备好各模块的贴图，只需写入前者即可。
+CustomizeWeapon 内置着 <b>CustomizeWeaponFramework</b>（CWF）框架。如果您是模组作者，想为模组添加本框架所提供的特性，阅读本文将会有很大帮助。
 
 ## 术语表
 
@@ -18,58 +10,86 @@
 
 例如，突击步枪可改装“瞄具”部件，安装“全息瞄具”模块后，为其提供了“全息瞄具”词条。
 
+> 对于玩家来说，模块和词条是无需区分的。
+
 ## 动态词条
+
+您的模组适配 CWF 时，无需一开始就支持全部特性，可以随开发按需引入，渐进式增强。
+
+例如，添加 `DynamicTraits`，武器将支持安装模块；添加 `DynamicGraphic`，将响应动态贴图变化。
+
+如果您想为武器添加模块功能，又暂未准备好各模块的贴图，只需写入前者即可。
+
+### 改装部件
 
 在武器的 `comps` 中添加以下代码：
 
 ```xml
 <li MayRequire="Vortex.CustomizeWeapon" Class="CWF.CompProperties_DynamicTraits">
-  <supportParts>
-    <li>Muzzle</li>
-    <li>Barrel</li>
-    <li>Receiver</li>
-    <li>Trigger</li>
-    <li>Stock</li>
-    <li>Grip</li>
+  <supportParts> <!-- 👈 -->
     <li>Sight</li>
     <li>Magazine</li>
-    <li>Underbarrel</li>
-    <li>Ammo</li>
+    <!-- ... -->
   </supportParts>
 </li>
 ```
 
+> 如果您的武器继承自 `BaseHumanMakeableGun` 且打算附加 `Ability`，需要为 `comps` 设置 `Inherit="False"`，并复制所需 comps，就像地狱猫步枪那样。
+
 武器将支持改装 `supportParts` 所枚举的部件，并提供一个改装面板。
 
-注意 `MayRequire="Vortex.CustomizeWeapon"`，它保证了您的模组与 `CustomizeWeapon` 软依赖，无需强制要求为前置。当玩家未启用 `CustomizeWeapon`，这个 `li` 会被忽略。
+注意 `MayRequire="Vortex.CustomizeWeapon"`，它保证您的模组既可以使用框架所提供的功能，又无需强制要求其为前置，这被称为软依赖。当玩家未启用框架时，整个 `li` 会被忽略。
+
+### 默认模块
+
+如果您需要让武器自带某些模块，如狙击步枪自带瞄准镜，在 `defaultWeaponTraitDefs` 中填入 `WeaponTraitDef`：
+
+```xml
+<li MayRequire="Vortex.CustomizeWeapon" Class="CWF.CompProperties_DynamicTraits">
+  <supportParts>
+    <li>Sight</li>
+    <li>Magazine</li>
+    <!-- ... -->
+  </supportParts>
+  <defaultWeaponTraitDefs> <!-- 👈 -->
+    <li>CWF_Trait_8xScope</li>
+    <!-- ... -->
+  </defaultWeaponTraitDefs>
+</li>
+```
+
+> 您只需填入 `WeaponTraitDef` 的 `defName`；如果您添加了多个同一部件的模块，将会看到报错。
 
 ## 动态贴图
 
-<!-- TODO -->
+TODO
+
+尝试使用：[偏移计算器](/offset-calc)。
 
 ## 可重命名
 
-<!-- TODO -->
+TODO
 
 ## 完整示例
 
-这是一个完整适配 `CustomizeWeaponFramework` 的武器 xml 示例：
+这是一个用到 CWF 完整特性的武器 xml 示例：
 
 ```xml
 <ThingDef ParentName="BaseHumanMakeableGun">
-  <defName>My_Gun_AssaultRifle</defName>
+  <defName>My_Gun_AssaultRifle</defName> <!-- 👈 您不应该使用 "CWF_" 前缀 -->
   <label>my assault rifle</label>
   <description>An assault rifle with customized parts.</description>
   <graphicData>
     <texPath>MyMod/Weapons/AssaultRifle/AssaultRifle</texPath>
     <graphicClass>Graphic_Single</graphicClass>
-    <shaderType>CutoutComplex</shaderType>
+    <shaderType>CutoutComplex</shaderType> <!-- 👈 使用 "CutoutComplex" 类型 -->
   </graphicData>
-  <weaponTags>
+  <weaponTags> <!-- 👈 将用于适用模块筛选 -->
     <li>CWF_AssaultRifle</li>
     <li>CWF_BurstFire</li>
   </weaponTags>
-  <comps Inherit="False">
+  <comps Inherit="False"> <!-- 👈 阻止继承 "comps" -->
+    <!-- #region 只需要复制这部分 -->
     <li Class="CompProperties_EquippableAbilityReloadable" />
     <li Class="CompProperties_Forbiddable" />
     <li Class="CompProperties_Styleable" />
@@ -82,12 +102,13 @@
       <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
       <minQualityForArtistic>Excellent</minQualityForArtistic>
     </li>
-    <li Class="CWF.CompProperties_DynamicTraits">
+    <!-- #endregion -->
+    <li MayRequire="Vortex.CustomizeWeapon" Class="CWF.CompProperties_DynamicTraits">
       <supportParts>
         <li>Sight</li>
       </supportParts>
     </li>
-    <li Class="CWF.CompProperties_DynamicGraphic">
+    <li MayRequire="Vortex.CustomizeWeapon" Class="CWF.CompProperties_DynamicGraphic">
       <attachmentPoints>
         <li>
           <part>Sight</part>
@@ -100,8 +121,8 @@
         </li>
       </attachmentPoints>
     </li>
-    <li Class="CWF.CompProperties_Renamable" />
-    <li Class="CWF.CompProperties_Colorable" />
+    <li MayRequire="Vortex.CustomizeWeapon" Class="CWF.CompProperties_Renamable" />
+    <li MayRequire="Vortex.CustomizeWeapon" Class="CWF.CompProperties_Colorable" />
   </comps>
   <thingCategories Inherit="False">
     <li>CWF_CustomizedWeapons</li>

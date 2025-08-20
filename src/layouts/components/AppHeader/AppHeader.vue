@@ -5,7 +5,7 @@ import NavItem from './components/NavItem.vue'
 <template>
   <header>
     <section class="left">
-      <h1><router-link to="/">CustomizeWeapon</router-link></h1>
+      <h1><router-link to="/">Customize Weapon</router-link></h1>
       <IconDev class="dev-icon" />
     </section>
 
