@@ -1,7 +1,7 @@
-export type DefDatabase = Partial<{
+export type DefDatabase = {
   ThingDef: Array<ThingDef>
   WeaponTraitDef: Array<WeaponTraitDef>
-}>
+}
 
 export type Defs = {
   '?xml': {

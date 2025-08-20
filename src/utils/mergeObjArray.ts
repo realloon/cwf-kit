@@ -1,7 +1,5 @@
-export function mergeObjArray(
-  objArray: Array<Record<string, any>>
-): DefDatabase {
-  return objArray.reduce((acc, cur) => {
+export function mergeObjArray(objArray: Array<Record<string, any>>) {
+  const result = objArray.reduce((acc, cur) => {
     for (const key in cur) {
       if (Object.prototype.hasOwnProperty.call(cur, key)) {
         if (!acc[key]) {
@@ -14,4 +12,6 @@ export function mergeObjArray(
 
     return acc
   }, {})
+
+  return result
 }

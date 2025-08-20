@@ -14,6 +14,7 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const effectScope: typeof import('vue')['effectScope']
+  const getAllHandles: typeof import('./src/utils/getAllHandles')['getAllHandles']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getCurrentWatcher: typeof import('vue')['getCurrentWatcher']
@@ -25,6 +26,7 @@ declare global {
   const isRef: typeof import('vue')['isRef']
   const isShallow: typeof import('vue')['isShallow']
   const markRaw: typeof import('vue')['markRaw']
+  const mergeObjArray: typeof import('./src/utils/mergeObjArray')['mergeObjArray']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
@@ -71,6 +73,7 @@ declare global {
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
   const watchSyncEffect: typeof import('vue')['watchSyncEffect']
+  const xmlParser: typeof import('./src/utils/xmlParser')['xmlParser']
 }
 // for type re-export
 declare global {

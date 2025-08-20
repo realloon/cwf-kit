@@ -1,43 +1,21 @@
-import { getAllHandles, mergeObjArray, buildTraitModules } from '../helpers'
-import { parser } from '@/utils'
+import { useDefDatabase } from '@/hooks/useDefDatabase'
 
 const isLoaded = ref(false)
 const traitModules = ref<TraitModule[]>([])
 
 async function loadXmlFiles() {
-  let defsArray: Array<Defs> = []
+  const { defDatabase, isBuilded, build } = useDefDatabase()
 
-  try {
-    isLoaded.value = false
-
-    const dirHandle = await showDirectoryPicker()
-    const xmlHandles = await getAllHandles(dirHandle, '.xml')
-
-    defsArray = await Promise.all(
-      xmlHandles.map(async handle =>
-        parser.parse(await (await handle.getFile()).text())
-      )
-    )
-
-    isLoaded.value = true
-  } catch (error) {
-    if (error instanceof Error && error.name === 'AbortError') {
-      return
-    } else {
-      throw error
-    }
+  if (!isBuilded.value) {
+    await build()
   }
 
-  const internalDefs = defsArray.map(d => d.Defs)
-  const defDatabase = mergeObjArray(internalDefs)
-  const { ThingDef, WeaponTraitDef } = defDatabase
+  const { ThingDef, WeaponTraitDef } = defDatabase.value
   if (!ThingDef || !WeaponTraitDef) {
     return console.error('No modules or traits in fold.')
   }
 
-  const thingDefs = ThingDef.filter(
-    t => t.defName && t['@_ParentName'] === 'CWF_TraitModule'
-  )
+  const thingDefs = ThingDef.filter(t => t['@_ParentName'] === 'CWF_Module')
   const weaponTraitDefs = WeaponTraitDef.filter(w => w.defName)
 
   traitModules.value = buildTraitModules(thingDefs, weaponTraitDefs)
@@ -45,4 +23,26 @@ async function loadXmlFiles() {
 
 export function useModules() {
   return { isLoaded, traitModules, loadXmlFiles }
+}
+
+// helper
+function buildTraitModules(
+  modules: Array<ThingDef>,
+  traits: Array<WeaponTraitDef>
+) {
+  const traitModules: Array<TraitModule> = []
+
+  modules.forEach(moduel => {
+    const target = moduel.modExtensions.li[0].weaponTraitDef[0]
+
+    const trait = traits.find(trait => trait.defName === target)
+
+    if (!trait) {
+      throw new Error(`${moduel.defName} can't find matchered trait ${target}`)
+    }
+
+    traitModules.push(Object.assign(moduel, trait))
+  })
+
+  return traitModules
 }
