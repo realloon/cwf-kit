@@ -1,5 +1,3 @@
-import type { ThingDef, WeaponTraitDef, TraitModule } from '@/types'
-
 export function buildTraitModules(
   modules: Array<ThingDef>,
   traits: Array<WeaponTraitDef>

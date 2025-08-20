@@ -1,5 +1,3 @@
-import type { Defs, DefDatabase, TraitModule } from '@/types'
-import { ref } from 'vue'
 import { getAllHandles, mergeObjArray, buildTraitModules } from '../helpers'
 import { parser } from '@/utils'
 

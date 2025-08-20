@@ -1,4 +1,3 @@
-import type { Defs, ThingDef, WeaponTraitDef } from '@/types'
 import { parser } from '@/utils'
 
 export function getDefs(xml: string, type: 'ThingDef'): Array<ThingDef>

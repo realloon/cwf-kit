@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Texture } from '@/modules/Texture'
 defineProps<{ texture: Texture }>()
 </script>
 

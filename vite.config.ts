@@ -14,7 +14,10 @@ export default defineConfig({
     VueRouter(),
     vue(),
     Layouts(),
-    AutoImport({ imports: ['vue', VueRouterAutoImports] }),
+    AutoImport({
+      imports: ['vue', VueRouterAutoImports],
+      dirs: ['./src/types/**'],
+    }),
     Components(),
   ],
   resolve: {

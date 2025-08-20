@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { TraitModule } from '@/types'
 import StatDisplay from './StatDisplay.vue'
 defineProps<{ module: TraitModule }>()
 </script>

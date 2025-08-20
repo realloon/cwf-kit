@@ -1,5 +1,3 @@
-import type { DefDatabase } from '@/types'
-
 export function mergeObjArray(
   objArray: Array<Record<string, any>>
 ): DefDatabase {
