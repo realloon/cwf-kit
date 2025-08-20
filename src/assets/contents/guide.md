@@ -57,11 +57,11 @@
 
 ```xml
 <ThingDef ParentName="BaseHumanMakeableGun">
-  <defName>CWF_Gun_AssaultRifle</defName>
-  <label>customized assault rifle</label>
+  <defName>My_Gun_AssaultRifle</defName>
+  <label>my assault rifle</label>
   <description>An assault rifle with customized parts.</description>
   <graphicData>
-    <texPath>CustomizeWeapon/Weapons/AssaultRifle/AssaultRifle</texPath>
+    <texPath>MyMod/Weapons/AssaultRifle/AssaultRifle</texPath>
     <graphicClass>Graphic_Single</graphicClass>
     <shaderType>CutoutComplex</shaderType>
   </graphicData>
@@ -85,7 +85,6 @@
     <li Class="CWF.CompProperties_DynamicTraits">
       <supportParts>
         <li>Sight</li>
-        <li>Ammo</li>
       </supportParts>
     </li>
     <li Class="CWF.CompProperties_DynamicGraphic">
