@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import guide from '@/assets/contents/guide.md?raw'
+import guide from '@/contents/guide.md?raw'
 </script>
 
 <template>
