@@ -34,5 +34,10 @@
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vue-tsc": "^3.0.4"
+  },
+  "overrides": {
+    "vite-plugin-vue-layouts": {
+      "vite": "$vite"
+    }
   }
 }
