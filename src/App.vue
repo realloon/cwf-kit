@@ -1,9 +1,5 @@
-<script setup lang="ts">
-import { AppHeader } from './containers'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <app-header />
-
   <router-view />
 </template>

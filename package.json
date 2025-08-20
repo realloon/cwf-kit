@@ -32,6 +32,7 @@
     "unplugin-vue-components": "^29.0.0",
     "unplugin-vue-router": "^0.15.0",
     "vite": "npm:rolldown-vite@latest",
+    "vite-plugin-vue-layouts": "^0.11.0",
     "vue-tsc": "^3.0.4"
   }
 }

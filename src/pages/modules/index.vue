@@ -30,11 +30,6 @@ const filteredModules = computed(() =>
 </template>
 
 <style scoped>
-main {
-  max-width: 1080px;
-  margin-inline: auto;
-}
-
 .module-list {
   display: flex;
   flex-direction: column;

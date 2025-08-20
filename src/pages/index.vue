@@ -7,10 +7,3 @@ import introduce from '@/assets/contents/introduce.md?raw'
     <Markdown :markdown="introduce" />
   </main>
 </template>
-
-<style scoped>
-main {
-  max-width: 1080px;
-  margin-inline: auto;
-}
-</style>

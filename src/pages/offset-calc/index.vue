@@ -24,8 +24,6 @@ main {
   display: flex;
   align-items: flex-start;
   gap: 24px;
-  max-width: 1080px;
-  margin-inline: auto;
 }
 
 .left {
