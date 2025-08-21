@@ -8,6 +8,7 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const Texture: typeof import('./src/types/Texture')['Texture']
+  const buildTraitModules: typeof import('./src/utils/buildTraitModules')['buildTraitModules']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']

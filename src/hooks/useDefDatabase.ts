@@ -1,9 +1,12 @@
 import type { DefDatabase } from '@/types'
 
-let defs: DefDatabase
-let isBuilded = ref(false)
+let defDatabase = ref<DefDatabase>({
+  ThingDef: [],
+  WeaponTraitDef: [],
+})
+let hasData = ref(false)
 
-async function build() {
+async function readDefDatabaseByDir() {
   let defsArray: Array<Defs> = []
 
   try {
@@ -24,18 +27,10 @@ async function build() {
   }
 
   const internalDefs = defsArray.map(d => d.Defs)
-  defs = mergeObjArray(internalDefs) as DefDatabase
-  isBuilded.value = true
+  defDatabase.value = mergeObjArray(internalDefs) as DefDatabase
+  hasData.value = true
 }
 
-const defDatabase = computed(async () => {
-  if (isBuilded.value === false) {
-    await build()
-  }
-
-  return defs
-})
-
 export function useDefDatabase() {
-  return { defDatabase, isBuilded }
+  return { defDatabase, hasData, readDefDatabaseByDir }
 }
