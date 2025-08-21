@@ -24,16 +24,6 @@ The weapon in a colonist's hands writes its own legend alongside its owner. Give
 
 Weapon modules are actual items in the world. They can be crafted, traded, looted from enemies, or received as quest rewards. Your colonists will also need to spend time to actually perform the modifications.
 
-## How to Use
-
-Vanilla weapons must first undergo a modular upgrade before they can be customized.
-
-1. Build the "Module Bench". This is used for the one time upgrade of vanilla weapons.
-2. Perform the "Modular Upgrade". This equips the weapon with universal interfaces and tactical rails.
-3. Select the weapon, click the new button on its info panel, and enter the modification screen.
-
-For most modded weapons, you can often skip directly to step 3.
-
 ## FAQ
 
 > <b>How is the compatibility?</b>
@@ -51,14 +41,6 @@ Support will be added in a future update.
 > <b>Is it compatible with Combat Extended?</b>
 
 It is not compatible at this time.
-
-> <b>Can I add it to an existing save?</b>
-
-Yes, but as the mod is under active development, it is not recommended for critical playthroughs just yet.
-
-> <b>Can I remove it from an existing save?</b>
-
-Yes. If you encounter any issues, please report them to me.
 
 ## Known Issues
 
