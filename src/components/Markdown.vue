@@ -122,6 +122,7 @@ article:deep() {
     font-size: 1.25rem;
     font-weight: bold;
     scroll-margin-top: 49px;
+    margin-block-end: 0.5rem;
   }
 
   h3 {
@@ -139,7 +140,7 @@ article:deep() {
   ul,
   ol {
     padding-inline-start: 2rem;
-    
+
     li::marker {
       font-family: var(--font-mono);
     }

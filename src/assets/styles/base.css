@@ -16,7 +16,7 @@ body {
   background-color: var(--color-page);
 
   font-family: var(--font-sans);
-  line-height: var(--font-mono);
+  line-height: 1;
 
   margin: 0;
   padding-inline: 16px;
@@ -44,6 +44,10 @@ a {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 ul,
 ol {
   margin-block: unset;
@@ -57,4 +61,9 @@ pre {
   padding: 16px;
   border-radius: 4px;
   margin-block: unset;
+}
+
+button {
+  font-size: inherit;
+  font-family: inherit;
 }
