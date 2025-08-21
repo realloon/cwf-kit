@@ -1,16 +1,11 @@
 import { useDefDatabase } from '@/hooks/useDefDatabase'
 
-const isLoaded = ref(false)
 const traitModules = ref<TraitModule[]>([])
 
-async function loadXmlFiles() {
-  const { defDatabase, isBuilded, build } = useDefDatabase()
+async function readTraitModule() {
+  const { defDatabase } = useDefDatabase()
 
-  if (!isBuilded.value) {
-    await build()
-  }
-
-  const { ThingDef, WeaponTraitDef } = defDatabase.value
+  const { ThingDef, WeaponTraitDef } = await defDatabase.value
   if (!ThingDef || !WeaponTraitDef) {
     return console.error('No modules or traits in fold.')
   }
@@ -22,7 +17,7 @@ async function loadXmlFiles() {
 }
 
 export function useModules() {
-  return { isLoaded, traitModules, loadXmlFiles }
+  return { traitModules, readTraitModule }
 }
 
 // helper

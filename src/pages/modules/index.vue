@@ -5,7 +5,7 @@ import Module from './components/Module.vue'
 import LoadupButton from './components/LoadupButton.vue'
 import { useModules } from './hooks/useModules'
 
-const { loadXmlFiles, isLoaded, traitModules } = useModules()
+const { readTraitModule, traitModules } = useModules()
 
 const filter = ref<readonly Part[]>(parts)
 const filteredModules = computed(() =>
@@ -25,7 +25,7 @@ const filteredModules = computed(() =>
       <Module v-for="module in filteredModules" :module="module" />
     </section>
 
-    <LoadupButton :handle="loadXmlFiles" />
+    <LoadupButton :handle="readTraitModule" />
   </main>
 </template>
 
