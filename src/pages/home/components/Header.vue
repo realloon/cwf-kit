@@ -23,6 +23,7 @@ import icon from '@/assets/imgs/icon.avif'
 
 .icon {
   width: 168px;
+  aspect-ratio: 1 / 1;
 }
 
 .title {
