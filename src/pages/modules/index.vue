@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import { parts, type Part } from '@/types'
+import { parts } from '@/types'
 import PartFilter from './components/PartFilter.vue'
 import Module from './components/Module.vue'
-import LoadupButton from './components/LoadupButton.vue'
-import { useModules } from './hooks/useModules'
+import { useDefDatabase } from '@/hooks/useDefDatabase'
 
-const { readTraitModule, traitModules } = useModules()
+const { defDatabase } = useDefDatabase()
+
+const traitModules = computed(() => {
+  const { ThingDef, WeaponTraitDef } = defDatabase.value
+
+  const thingDefs = ThingDef.filter(t => t['@_ParentName'] === 'CWF_Module')
+  const weaponTraitDefs = WeaponTraitDef.filter(w => w.defName)
+
+  return buildTraitModules(thingDefs, weaponTraitDefs)
+})
 
 const filter = ref<readonly Part[]>(parts)
 const filteredModules = computed(() =>
@@ -16,17 +24,13 @@ const filteredModules = computed(() =>
 </script>
 
 <template>
-  <main>
-    <h1 hidden>Modules</h1>
+  <h1 hidden>Modules</h1>
 
-    <PartFilter v-model="filter" />
+  <PartFilter v-model="filter" />
 
-    <section class="module-list">
-      <Module v-for="module in filteredModules" :module="module" />
-    </section>
-
-    <LoadupButton :handle="readTraitModule" />
-  </main>
+  <section class="module-list">
+    <Module v-for="module in filteredModules" :module="module" />
+  </section>
 </template>
 
 <style scoped>

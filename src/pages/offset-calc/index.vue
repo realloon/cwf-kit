@@ -7,20 +7,20 @@ const { backTex, partTexs } = useTexs()
 </script>
 
 <template>
-  <main>
-    <section class="left">
+  <section class="offset-calc">
+    <div class="left">
       <TextureCanvas :back-tex="backTex" :part-texs="partTexs" />
       <TexSet style="width: 12rem" :texture="backTex" is-minify />
-    </section>
+    </div>
 
-    <section class="right">
+    <div class="right">
       <TexSet v-for="partTex in partTexs" :texture="partTex" is-offsetable />
-    </section>
-  </main>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-main {
+.offset-calc {
   display: flex;
   align-items: flex-start;
   gap: 24px;

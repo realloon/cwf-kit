@@ -6,6 +6,13 @@ let defDatabase = ref<DefDatabase>({
 })
 let hasData = ref(false)
 
+async function readDefDatabaseByJson() {
+  const json = (await import('@/assets/db/defs.json?raw')).default
+  const data = JSON.parse(json)
+  defDatabase.value = data
+  hasData.value = true
+}
+
 async function readDefDatabaseByDir() {
   let defsArray: Array<Defs> = []
 
@@ -32,5 +39,5 @@ async function readDefDatabaseByDir() {
 }
 
 export function useDefDatabase() {
-  return { defDatabase, hasData, readDefDatabaseByDir }
+  return { defDatabase, hasData, readDefDatabaseByJson, readDefDatabaseByDir }
 }

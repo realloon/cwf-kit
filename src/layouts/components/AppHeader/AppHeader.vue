@@ -1,9 +1,25 @@
 <script setup lang="ts">
 import NavItem from './components/NavItem.vue'
+
+const isSticky = ref(false)
+const observerTarget = useTemplateRef('observerTarget')
+
+onMounted(() => {
+  if (!observerTarget.value) return
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      isSticky.value = !entry.isIntersecting
+    })
+  })
+
+  observer.observe(observerTarget.value)
+})
 </script>
 
 <template>
-  <header>
+  <div ref="observerTarget"></div>
+  <header :class="isSticky && 'is-sticky'">
     <section class="left">
       <h1><router-link to="/">Customize Weapon</router-link></h1>
       <IconDev class="dev-icon" />
@@ -31,19 +47,24 @@ import NavItem from './components/NavItem.vue'
 
 <style scoped>
 header {
-  width: min(1080px, 100%);
-  margin-inline: auto;
-
-  position: sticky;
-  top: 0;
+  --width: min(1080px, 100%);
+  height: 48px;
+  padding-inline: calc((100% - var(--width)) / 2 + 16px);
+  margin-inline: -16px; /* body padding */
+  margin-bottom: 16px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  height: 48px;
-  margin-block-end: 8px;
+  position: sticky;
+  top: 0;
+
   background-color: var(--color-page);
+
+  &.is-sticky {
+    box-shadow: 0 1px 5px #00000026;
+  }
 }
 
 .left,

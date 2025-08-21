@@ -21,6 +21,7 @@ export type ThingDef = {
   defName: string
   costList: Record<string, number>
   statBases: { WorkToMake: number }
+  comps: any // imp
   modExtensions: {
     li: Array<{
       weaponTraitDef: string

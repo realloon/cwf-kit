@@ -8,7 +8,8 @@ import icon from '@/assets/imgs/icon.avif'
     <p class="title">CustomizeWeaponFramework</p>
 
     <div>
-      <button @click="$router.push('/guide')">Guide</button>
+      <text-button to="/wiki">Wiki</text-button>
+      <text-button to="/guide">Guide</text-button>
     </div>
   </section>
 </template>
@@ -36,18 +37,5 @@ div {
   display: flex;
   gap: 16px;
   margin-top: 32px;
-
-  button {
-    padding: 0.5em 1em;
-    background-color: #f1f1f1;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-
-    &:hover {
-      background-color: #e5e5e5;
-    }
-  }
 }
 </style>

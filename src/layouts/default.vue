@@ -12,7 +12,7 @@ import AppHeader from './components/AppHeader/AppHeader.vue'
 
 <style scoped>
 main {
-  max-width: 1080px;
+  width: min(1080px, 100%);
   margin-inline: auto;
 }
 </style>

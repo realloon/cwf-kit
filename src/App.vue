@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useDefDatabase } from './hooks/useDefDatabase'
+
+const { readDefDatabaseByJson } = useDefDatabase()
+readDefDatabaseByJson()
+</script>
 
 <template>
   <router-view />

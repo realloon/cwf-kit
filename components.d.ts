@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Button: typeof import('./src/components/Button.vue')['default']
     Checkbox: typeof import('./src/components/Checkbox.vue')['default']
     CodeBlock: typeof import('./src/components/CodeBlock.vue')['default']
     IconBook: typeof import('./src/components/icon/IconBook.vue')['default']
@@ -22,6 +23,7 @@ declare module 'vue' {
     IconList: typeof import('./src/components/icon/IconList.vue')['default']
     IconModule: typeof import('./src/components/icon/IconModule.vue')['default']
     IconOpacity: typeof import('./src/components/icon/IconOpacity.vue')['default']
+    IconPackage: typeof import('./src/components/icon/IconPackage.vue')['default']
     IconSet: typeof import('./src/components/icon/IconSet.vue')['default']
     IconTexture: typeof import('./src/components/icon/IconTexture.vue')['default']
     IconUpload: typeof import('./src/components/icon/IconUpload.vue')['default']
@@ -29,5 +31,6 @@ declare module 'vue' {
     Markdown: typeof import('./src/components/Markdown.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TextButton: typeof import('./src/components/TextButton.vue')['default']
   }
 }
