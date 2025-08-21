@@ -47,8 +47,6 @@ const { texture, isMinify = false } = defineProps<{
           v-model="texture.x"
           :disabled="!texture.src"
           type="number"
-          min="-72"
-          max="320"
           name="x"
         />
       </label>
@@ -67,8 +65,6 @@ const { texture, isMinify = false } = defineProps<{
           v-model="texture.y"
           :disabled="!texture.src"
           type="number"
-          min="-72"
-          max="320"
           name="y"
         />
       </label>
