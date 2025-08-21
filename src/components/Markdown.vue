@@ -140,6 +140,7 @@ article:deep() {
   ul,
   ol {
     padding-inline-start: 2rem;
+    margin-bottom: 0.5rem;
 
     li::marker {
       font-family: var(--font-mono);

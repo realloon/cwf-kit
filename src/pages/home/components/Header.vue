@@ -10,6 +10,7 @@ import icon from '@/assets/imgs/icon.avif'
     <div>
       <text-button to="/wiki">Wiki</text-button>
       <text-button to="/guide">Guide</text-button>
+      <text-button to="/reference">API Reference</text-button>
     </div>
   </section>
 </template>
