@@ -34,15 +34,20 @@ defineProps<{ module: TraitModule }>()
 
 <style scoped>
 section {
+  position: relative;
+  margin-top: 1.5rem;
+  background-color: var(--color-ui-back);
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
 h2 {
+  position: absolute;
+  top: -1.5rem;
   font-weight: bold;
   font-family: var(--font-mono);
-  color: #333;
+  opacity: 0.8;
 }
 
 .main-view {
@@ -50,7 +55,6 @@ h2 {
   flex-direction: column;
   gap: 8px;
 
-  background-color: #efefef;
   padding: 16px;
   border-radius: 4px;
 }

@@ -10,9 +10,10 @@ defineProps<{ to?: string }>()
 
 <style scoped>
 .text-btn {
+  color: var(--color-ui-font);
+  background-color: var(--color-ui-back);
   font-weight: bold;
   padding: 6px 14px;
-  background-color: #f1f1f1;
   border: none;
   border-radius: 8px;
   cursor: pointer;

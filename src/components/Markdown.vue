@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { parse } from 'marked'
 import { codeToHtml } from 'shiki'
+import { useColorScheme } from '@/hooks/useColorScheme'
 
 const { markdown, hasToc = false } = defineProps<{
   markdown: string
@@ -19,6 +20,7 @@ const toc = ref<Title[]>([])
 const activeTitleId = ref('')
 
 let observer: IntersectionObserver | null = null
+const { isDark } = useColorScheme()
 
 onMounted(async () => {
   const doc = document.createElement('article')
@@ -36,7 +38,7 @@ onMounted(async () => {
 
       pre.outerHTML = await codeToHtml(code, {
         lang,
-        theme: 'min-light',
+        theme: isDark.value ? 'min-dark' : 'min-light',
       })
     })
   )
@@ -150,7 +152,7 @@ article:deep() {
   blockquote {
     margin: 0;
     padding-inline-start: calc(1em - 4px);
-    border-inline-start: 4px solid #efefef;
+    border-inline-start: 4px solid var(--color-ui-back);
   }
 
   pre {
@@ -159,7 +161,7 @@ article:deep() {
   }
 
   a {
-    color: #0e0ebd;
+    color: var(--color-color);
   }
 }
 
@@ -188,7 +190,7 @@ article:deep() {
 
     &.is-active {
       color: var(--color-font);
-      background-color: #efefef;
+      background-color: var(--color-ui-back);
     }
 
     &:hover {

@@ -1,14 +1,30 @@
 :root {
-  font-size: 18px;
-  scrollbar-gutter: stable;
-}
-
-:root {
   --color-font: #333;
   --color-page: #fcfcfc;
+  --color-color: #0e0ebd;
+  --color-panel: #fff;
+  --color-border: #edf2fa;
+  --color-ui-font: var(--color-font);
+  --color-ui-back: #f0f0f0;
 
   --font-sans: 'Segoe UI', ui-sans-serif, sans-serif, sans-serif;
   --font-mono: 'Monaco', 'Cascadia Code', 'Consolas', ui-monospace, monospace;
+
+  @media (prefers-color-scheme: dark) {
+    --color-font: #e3e3e3;
+    --color-page: #1a1a1a;
+    --color-color: palevioletred;
+    --color-panel: #000;
+    --color-border: #000;
+    --color-ui-font: #aac8e4;
+    --color-ui-back: #2f2f2f;
+  }
+}
+
+:root {
+  color-scheme: light dark;
+  font-size: 18px;
+  scrollbar-gutter: stable;
 }
 
 body {

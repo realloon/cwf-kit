@@ -19,7 +19,7 @@ defineProps<{ name: string; to: string }>()
   gap: 2px;
 
   &:has(.router-link-active) .line {
-    background-color: #0e0ebd;
+    background-color: var(--color-color);
   }
 }
 
@@ -32,7 +32,7 @@ defineProps<{ name: string; to: string }>()
 
   &:hover {
     text-decoration: none;
-    background-color: #efefef;
+    background-color: var(--color-ui-back);
   }
 
   span {

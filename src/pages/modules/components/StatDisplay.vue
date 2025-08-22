@@ -13,9 +13,10 @@ const json = computed(() => JSON.stringify(code, null, 2))
 
 <style scoped>
 .stat-display {
-  background-color: white;
   padding: 8px;
   border-radius: 4px;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-page);
 }
 
 span {

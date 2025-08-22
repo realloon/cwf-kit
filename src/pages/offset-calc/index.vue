@@ -35,7 +35,6 @@ const { backTex, partTexs } = useTexs()
 
 .right {
   display: flex;
-  /* flex-direction: column; */
   flex-wrap: wrap;
   gap: 12px;
 }

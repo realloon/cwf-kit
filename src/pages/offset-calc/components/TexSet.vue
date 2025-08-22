@@ -87,8 +87,8 @@ const { texture, isMinify = false } = defineProps<{
   gap: 4px;
 
   padding: 12px;
-  border: 1px solid #edf2fa;
-  background-color: #fff;
+  background-color: var(--color-ui-back);
+  border: 1px solid var(--color-border);
   border-radius: 4px;
 
   z-index: 1;

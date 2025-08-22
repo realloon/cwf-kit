@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { codeToHtml } from 'shiki'
+import { useColorScheme } from '@/hooks/useColorScheme'
 const { code } = defineProps<{ code: string }>()
+
+const { isDark } = useColorScheme()
 
 const highlighted = ref<string | null>(null)
 onMounted(async () => {
   highlighted.value = await codeToHtml(code, {
     lang: 'json',
-    theme: 'min-light',
+    theme: isDark.value ? 'min-dark' : 'min-light',
   })
 })
 </script>

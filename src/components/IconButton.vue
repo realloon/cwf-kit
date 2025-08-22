@@ -17,7 +17,7 @@
   font-size: 1rem;
   border: none;
   border-radius: 4px;
-  background-color: #f0f0f0;
+  background-color: var(--color-page);
   cursor: pointer;
 }
 
