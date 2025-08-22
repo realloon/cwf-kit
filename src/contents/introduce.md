@@ -53,6 +53,6 @@ This mod is still under active development. The following non-critical issues wi
 
 ## For Mod Authors
 
-This mod was designed from the ground up to be a Framework. It is performant, highly compatible, and extremely extensible. You can easily make your weapons compatible with the customization features. For details, please see our: [Modding Guide](https://cwf-kit.pages.dev/guide).
+This mod was designed from the ground up to be a Framework. It is performant, highly compatible, and extremely extensible. You can easily make your weapons compatible with the customization features. For details, please see the: [Modding Guide](https://cwf-kit.pages.dev/guide).
 
 I hope that my painstaking efforts will empower others.
