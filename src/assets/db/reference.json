@@ -5,27 +5,42 @@
       "id": "DynamicTraits",
       "type": "LiWithClass",
       "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\"]",
-      "description": "为武器添加武器模块支持",
-      "isArray": false,
-      "valueType": "class",
+      "description": "为武器添加模块系统的支持。",
       "attributes": [],
       "parents": ["comps"],
       "children": ["supportParts", "defaultWeaponTraitDefs"],
-      "example": "<li Class=\"CWF.CompProperties_DynamicTraits\"><supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><li>Trigger</li><li>Stock</li><li>Grip</li><li>Sight</li><li>Magazine</li><li>Underbarrel</li><li>Ammo</li></supportParts></li>",
+      "isArray": false,
+      "example": "<li Class=\"CWF.CompProperties_DynamicTraits\"><supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><!-- <li>...</li> --></supportParts></li>",
       "updateAt": 1756093117355
     },
     {
       "id": "supportParts",
       "type": "tag",
       "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\" > supportParts]",
-      "description": "武器支持的改装部件",
-      "isArray": true,
-      "valueType": "enum:Part",
+      "description": "枚举武器所支持的改装部件。",
       "attributes": [],
       "parents": ["DynamicTraits"],
-      "children": ["li"],
-      "example": "<supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><li>Trigger</li><li>Stock</li><li>Grip</li><li>Sight</li><li>Magazine</li><li>Underbarrel</li><li>Ammo</li></supportParts>",
+      "children": ["enum:Part"],
+      "isArray": true,
+      "example": "<supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><!-- <li>...</li> --></supportParts>",
       "updateAt": 1756093126853
+    }
+  ],
+  "enums": [
+    {
+      "id": "Part",
+      "values": [
+        "Muzzle",
+        "Barrel",
+        "Receiver",
+        "Trigger",
+        "Stock",
+        "Grip",
+        "Sight",
+        "Magazine",
+        "Underbarrel",
+        "Ammo"
+      ]
     }
   ]
 }

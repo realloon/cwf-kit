@@ -31,6 +31,9 @@ onMounted(() => {
           <NavItem name="Guide" to="/guide"><IconBook /></NavItem>
         </li>
         <li>
+          <NavItem name="API" to="/reference"><IconNote /></NavItem>
+        </li>
+        <li>
           <NavItem name="Modules" to="/modules">
             <IconList style="transform: scale(1.1)" />
           </NavItem>

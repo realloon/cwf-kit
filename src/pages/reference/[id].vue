@@ -1,16 +1,37 @@
 <script setup lang="ts">
 import { codeToHtml } from 'shiki'
+import TagLink from './components/TagLink.vue'
 
-const { params } = useRoute()
-const { tags } = useReferences()
-
-const xmlDoc = tags.find(r => r.id === params.id)!
-
+const route = useRoute()
 const { isDark } = useColorScheme()
-const html = ref()
+const { tagMap, enumMap } = useReferences()
 
-onMounted(async () => {
-  const formatted = await formatXml(xmlDoc.example)
+const html = ref()
+const tag = computed(() => tagMap.get(route.params.id as string))
+const updateAt = computed(() => dateFormater.format(tag.value?.updateAt))
+
+function parseChildren(el: string) {
+  const [type, key] = el.split(':') ?? []
+
+  if (!key) {
+    return type
+  } else {
+    if (type === 'enum') {
+      const values = enumMap.get(key)?.values
+      return values
+    }
+  }
+}
+
+watchEffect(async () => {
+  const currentTagId = route.params.id as string
+  if (!currentTagId) return
+
+  const currentTag = tagMap.get(currentTagId)
+  if (!currentTag) return
+
+  const formatted = await formatXml(currentTag.example)
+
   const hightlighted = await codeToHtml(formatted, {
     lang: 'xml',
     theme: isDark.value ? 'min-dark' : 'min-light',
@@ -21,52 +42,85 @@ onMounted(async () => {
 </script>
 
 <template>
-  <article>
-    <h2>
-      <span class="name">{{ xmlDoc.id }}</span>
-      <span class="value-type">{{ xmlDoc.valueType }}</span>
-    </h2>
+  <article v-if="tag">
+    <h2>{{ tag.id }}</h2>
 
-    <p class="path">{{ xmlDoc.path }}</p>
-    <p>{{ xmlDoc.description }}</p>
+    <p class="description">{{ tag.description }}</p>
 
-    <h3>父元素</h3>
+    <section class="path">
+      <p>{{ tag.path }}</p>
+    </section>
+
+    <h3>Parents</h3>
     <ul>
-      <li v-for="el in xmlDoc.parents">{{ el }}</li>
+      <li v-for="el in tag.parents">
+        <TagLink :id="el" />
+      </li>
     </ul>
 
-    <h3>子元素</h3>
-    <ul>
-      <li v-for="el in xmlDoc.children">{{ el }}</li>
-    </ul>
+    <section class="children">
+      <h3>Children</h3>
+      <ul>
+        <li v-for="el in tag.children">
+          <template v-if="Array.isArray(parseChildren(el))">
+            <li class="tag"><TagLink id="li" /></li>
+            <h4>Enum value:</h4>
+            <ul>
+              <li v-for="value in parseChildren(el)">{{ value }}</li>
+            </ul>
+          </template>
 
-    <h3>示例</h3>
-    <div v-html="html"></div>
+          <TagLink v-else :id="el" />
+        </li>
+      </ul>
+    </section>
+
+    <section class="example">
+      <h3>Example</h3>
+      <div v-html="html"></div>
+    </section>
+
+    <p>
+      Update at: <data :value="tag.updateAt">{{ updateAt }}</data>
+    </p>
   </article>
+
+  <h2 v-else>404</h2>
 </template>
 
 <style scoped>
 article {
-  line-height: 1.5;
   font-family: 'LXGW Wenkai';
+  line-height: 1.5;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 h2 {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
 
-  .name {
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
+h3 {
+  font-weight: bold;
+}
 
-  .value-type {
+.path {
+  width: fit-content;
+  padding: 4px 8px;
+  border: 1px solid var(--color-ui-back);
+  border-radius: 4px;
+
+  p {
     font-family: var(--font-mono);
   }
 }
 
-.path {
-  font-family: var(--font-mono);
+.example {
+  h3 {
+    transform: translateY(0.5rem);
+  }
 }
 </style>

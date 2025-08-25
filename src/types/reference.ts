@@ -1,6 +1,7 @@
 export interface ReferenceSchema {
   version: string
   tags: Array<XmlTag>
+  enums: Array<Enum>
 }
 
 export interface XmlTag {
@@ -8,10 +9,10 @@ export interface XmlTag {
   type: 'tag' | 'LiWithClass'
   path: string
   description: string
-  valueType: 'class' | 'enum'
   attributes: Array<Attribute>
   parents: Array<string>
   children: Array<string>
+  isArray: boolean
   example: string
   updateAt: number
 }
@@ -19,4 +20,9 @@ export interface XmlTag {
 interface Attribute {
   name: string
   value: string | number | boolean
+}
+
+interface Enum {
+  id: string
+  values: Array<string>
 }

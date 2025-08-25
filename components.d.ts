@@ -22,6 +22,7 @@ declare module 'vue' {
     IconImagePlus: typeof import('./src/components/icon/IconImagePlus.vue')['default']
     IconList: typeof import('./src/components/icon/IconList.vue')['default']
     IconModule: typeof import('./src/components/icon/IconModule.vue')['default']
+    IconNote: typeof import('./src/components/icon/IconNote.vue')['default']
     IconOpacity: typeof import('./src/components/icon/IconOpacity.vue')['default']
     IconPackage: typeof import('./src/components/icon/IconPackage.vue')['default']
     IconSet: typeof import('./src/components/icon/IconSet.vue')['default']
