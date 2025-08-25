@@ -2,7 +2,6 @@
 import { parts } from '@/types'
 import PartFilter from './components/PartFilter.vue'
 import Module from './components/Module.vue'
-import { useDefDatabase } from '@/hooks/useDefDatabase'
 
 const { defDatabase } = useDefDatabase()
 

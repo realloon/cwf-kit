@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { parse } from 'marked'
 import { codeToHtml } from 'shiki'
-import { useColorScheme } from '@/hooks/useColorScheme'
 
 const { markdown, hasToc = false } = defineProps<{
   markdown: string

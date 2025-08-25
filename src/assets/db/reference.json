@@ -1,11 +1,12 @@
 {
   "version": "",
-  "references": [
+  "tags": [
     {
       "id": "DynamicTraits",
       "type": "LiWithClass",
       "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\"]",
       "description": "为武器添加武器模块支持",
+      "isArray": false,
       "valueType": "class",
       "attributes": [],
       "parents": ["comps"],
@@ -18,7 +19,8 @@
       "type": "tag",
       "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\" > supportParts]",
       "description": "武器支持的改装部件",
-      "valueType": "enum",
+      "isArray": true,
+      "valueType": "enum:Part",
       "attributes": [],
       "parents": ["DynamicTraits"],
       "children": ["li"],

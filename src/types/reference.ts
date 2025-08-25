@@ -1,9 +1,9 @@
 export interface ReferenceSchema {
   version: string
-  references: Array<XmlDoc>
+  tags: Array<XmlTag>
 }
 
-export interface XmlDoc {
+export interface XmlTag {
   id: string
   type: 'tag' | 'LiWithClass'
   path: string

@@ -47,8 +47,7 @@ It is not compatible at this time.
 This mod is still under active development. The following non-critical issues will be addressed in future updates:
 
 1. Some modules may have unbalanced stats or misaligned graphics.
-   Reloadable modules like grenade launchers will have their ammo count reset after the weapon is reloaded.
-2. If you see the message "No available modules in inventory", your colonist needs to pick up the module first. Subscribing to a mod like Pick Up And Haul is recommended.
+2. Reloadable modules like grenade launchers will have their ammo count reset after the weapon is reloaded.
 3. When modifying a weapon lying on the ground, opening the menu again mid-progress may cause errors. Please wait for the current task to complete before issuing new orders.
 
 ## For Mod Authors

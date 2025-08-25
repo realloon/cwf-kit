@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useDefDatabase } from '@/hooks/useDefDatabase'
-
 const { defDatabase } = useDefDatabase()
 
 const weaponDefs = computed(() =>

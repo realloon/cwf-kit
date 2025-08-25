@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { codeToHtml } from 'shiki'
-import { useColorScheme } from '@/hooks/useColorScheme'
 const { code } = defineProps<{ code: string }>()
 
 const { isDark } = useColorScheme()

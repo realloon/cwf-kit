@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import json from '@/assets/db/reference.json?raw'
-const { references }: ReferenceSchema = JSON.parse(json)
+const { tags } = useReferences()
 </script>
 
 <template>
   <ul>
-    <li v-for="reference in references">
-      <RouterLink :to="`/reference/${reference.id}`">
-        {{ reference.id }}
+    <li v-for="tag in tags">
+      <RouterLink :to="`/reference/${tag.id}`">
+        {{ tag.id }}
       </RouterLink>
     </li>
   </ul>

@@ -1,5 +1,3 @@
-import { useDefDatabase } from '@/hooks/useDefDatabase'
-
 const traitModules = ref<TraitModule[]>([])
 
 async function readTraitModule() {

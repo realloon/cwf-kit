@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { codeToHtml } from 'shiki'
-import { useColorScheme } from '@/hooks/useColorScheme'
-// ===
-import json from '@/assets/db/reference.json?raw'
-const { references }: ReferenceSchema = JSON.parse(json)
-// ===
 
 const { params } = useRoute()
+const { tags } = useReferences()
 
-const xmlDoc = references.find(r => r.id === params.id)!
+const xmlDoc = tags.find(r => r.id === params.id)!
 
 const { isDark } = useColorScheme()
 const html = ref()

@@ -16,7 +16,7 @@ export default defineConfig({
     Layouts(),
     AutoImport({
       imports: ['vue', VueRouterAutoImports],
-      dirs: ['./src/types/**', './src/utils/**'],
+      dirs: ['./src/types/**', './src/hooks/**', './src/utils/**'],
     }),
     Components(),
   ],
