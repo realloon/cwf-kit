@@ -15,6 +15,7 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const effectScope: typeof import('vue')['effectScope']
+  const formatXml: typeof import('./src/utils/formatXml')['formatXml']
   const getAllHandles: typeof import('./src/utils/getAllHandles')['getAllHandles']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
@@ -87,4 +88,7 @@ declare global {
   // @ts-ignore
   export type { DefDatabase, Defs, TraitModule, ThingDef, WeaponTraitDef, Part } from './src/types/index'
   import('./src/types/index')
+  // @ts-ignore
+  export type { ReferenceSchema, XmlDoc } from './src/types/reference'
+  import('./src/types/reference')
 }

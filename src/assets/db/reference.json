@@ -1,0 +1,29 @@
+{
+  "version": "",
+  "references": [
+    {
+      "id": "DynamicTraits",
+      "type": "LiWithClass",
+      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\"]",
+      "description": "为武器添加武器模块支持",
+      "valueType": "class",
+      "attributes": [],
+      "parents": ["comps"],
+      "children": ["supportParts", "defaultWeaponTraitDefs"],
+      "example": "<li Class=\"CWF.CompProperties_DynamicTraits\"><supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><li>Trigger</li><li>Stock</li><li>Grip</li><li>Sight</li><li>Magazine</li><li>Underbarrel</li><li>Ammo</li></supportParts></li>",
+      "updateAt": 1756093117355
+    },
+    {
+      "id": "supportParts",
+      "type": "tag",
+      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\" > supportParts]",
+      "description": "武器支持的改装部件",
+      "valueType": "enum",
+      "attributes": [],
+      "parents": ["DynamicTraits"],
+      "children": ["li"],
+      "example": "<supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><li>Trigger</li><li>Stock</li><li>Grip</li><li>Sight</li><li>Magazine</li><li>Underbarrel</li><li>Ammo</li></supportParts>",
+      "updateAt": 1756093126853
+    }
+  ]
+}

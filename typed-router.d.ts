@@ -33,6 +33,7 @@ declare module 'vue-router/auto-routes' {
     '/offset-calc/components/TextureCanvas': RouteRecordInfo<'/offset-calc/components/TextureCanvas', '/offset-calc/components/TextureCanvas', Record<never, never>, Record<never, never>>,
     '/offset-calc/components/ToggleButton': RouteRecordInfo<'/offset-calc/components/ToggleButton', '/offset-calc/components/ToggleButton', Record<never, never>, Record<never, never>>,
     '/reference/': RouteRecordInfo<'/reference/', '/reference', Record<never, never>, Record<never, never>>,
+    '/reference/[id]': RouteRecordInfo<'/reference/[id]', '/reference/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/wiki/': RouteRecordInfo<'/wiki/', '/wiki', Record<never, never>, Record<never, never>>,
   }
 
@@ -105,6 +106,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/reference/index.vue': {
       routes: '/reference/'
+      views: never
+    }
+    'src/pages/reference/[id].vue': {
+      routes: '/reference/[id]'
       views: never
     }
     'src/pages/wiki/index.vue': {
