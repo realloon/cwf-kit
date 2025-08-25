@@ -7,7 +7,7 @@ let defDatabase = ref<DefDatabase>({
 let hasData = ref(false)
 
 async function readDefDatabaseByJson() {
-  const json = (await import('@/assets/db/defs.json?raw')).default
+  const json = (await import('@/assets/db/def.json?raw')).default
   const data = JSON.parse(json)
   defDatabase.value = data
   hasData.value = true
