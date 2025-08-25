@@ -7,26 +7,23 @@ const tag = computed(() => tagMap.get(id))
 </script>
 
 <template>
-  <RouterLink v-if="tag" class="tag is-link" :to="`/reference/${tag.id}`">
-    {{ tag.id }}
+  <RouterLink v-if="tag" class="use-link" :to="`/reference/tag/${tag.id}`">
+    <code>{{ tag.id }}</code>
   </RouterLink>
-  <span v-else class="tag">{{ id }}</span>
+
+  <span v-else>
+    <code>{{ id }}</code>
+  </span>
 </template>
 
 <style scoped>
 .tag {
-  font-family: var(--font-mono);
-
   &::before {
     content: '<';
   }
 
   &::after {
     content: '>';
-  }
-
-  &.is-link {
-    color: var(--color-color);
   }
 }
 </style>

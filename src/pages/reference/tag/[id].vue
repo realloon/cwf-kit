@@ -1,27 +1,15 @@
 <script setup lang="ts">
 import { codeToHtml } from 'shiki'
-import TagLink from './components/TagLink.vue'
+import TagLink from '../components/TagLink.vue'
+import Children from '../components/Children.vue'
 
 const route = useRoute()
 const { isDark } = useColorScheme()
-const { tagMap, enumMap } = useReferences()
+const { tagMap } = useReferences()
 
 const html = ref()
 const tag = computed(() => tagMap.get(route.params.id as string))
 const updateAt = computed(() => dateFormater.format(tag.value?.updateAt))
-
-function parseChildren(el: string) {
-  const [type, key] = el.split(':') ?? []
-
-  if (!key) {
-    return type
-  } else {
-    if (type === 'enum') {
-      const values = enumMap.get(key)?.values
-      return values
-    }
-  }
-}
 
 watchEffect(async () => {
   const currentTagId = route.params.id as string
@@ -62,15 +50,7 @@ watchEffect(async () => {
       <h3>Children</h3>
       <ul>
         <li v-for="el in tag.children">
-          <template v-if="Array.isArray(parseChildren(el))">
-            <li class="tag"><TagLink id="li" /></li>
-            <h4>Enum value:</h4>
-            <ul>
-              <li v-for="value in parseChildren(el)">{{ value }}</li>
-            </ul>
-          </template>
-
-          <TagLink v-else :id="el" />
+          <Children :el="el" />
         </li>
       </ul>
     </section>
@@ -90,7 +70,6 @@ watchEffect(async () => {
 
 <style scoped>
 article {
-  font-family: 'LXGW Wenkai';
   line-height: 1.5;
 
   display: flex;
@@ -115,12 +94,6 @@ h3 {
 
   p {
     font-family: var(--font-mono);
-  }
-}
-
-.example {
-  h3 {
-    transform: translateY(0.5rem);
   }
 }
 </style>

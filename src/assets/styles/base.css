@@ -7,7 +7,7 @@
   --color-ui-font: var(--color-font);
   --color-ui-back: #f0f0f0;
 
-  --font-sans: 'Segoe UI', ui-sans-serif, sans-serif, sans-serif;
+  --font-sans: 'LXGW WenKai', 'Segoe UI', ui-sans-serif, sans-serif, sans-serif;
   --font-mono: 'Monaco', 'Cascadia Code', 'Consolas', ui-monospace, monospace;
 
   @media (prefers-color-scheme: dark) {
@@ -79,7 +79,15 @@ pre {
   margin-block: unset;
 }
 
+code {
+  font-family: var(--font-mono);
+}
+
 button {
   font-size: inherit;
   font-family: inherit;
+}
+
+.use-link {
+  color: var(--color-color);
 }

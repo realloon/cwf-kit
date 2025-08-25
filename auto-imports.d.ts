@@ -94,6 +94,6 @@ declare global {
   export type { DefDatabase, Defs, TraitModule, ThingDef, WeaponTraitDef, Part } from './src/types/index'
   import('./src/types/index')
   // @ts-ignore
-  export type { ReferenceSchema, XmlTag } from './src/types/reference'
+  export type { ReferenceSchema, XmlTag, ValueType } from './src/types/reference'
   import('./src/types/reference')
 }

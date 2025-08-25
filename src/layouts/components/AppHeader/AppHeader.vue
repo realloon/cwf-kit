@@ -21,7 +21,7 @@ onMounted(() => {
   <div ref="observerTarget"></div>
   <header :class="isSticky && 'is-sticky'">
     <section class="left">
-      <h1><router-link to="/">Customize Weapon</router-link></h1>
+      <h1 class="title"><router-link to="/">Customize Weapon</router-link></h1>
       <IconDev class="dev-icon" />
     </section>
 
@@ -76,7 +76,7 @@ header {
   align-items: center;
 }
 
-h1 {
+.title {
   font-size: 1.25rem;
   font-weight: bold;
 }

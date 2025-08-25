@@ -1,13 +1,31 @@
 <script setup lang="ts">
-const { tagMap } = useReferences()
+const { tagMap, enumMap } = useReferences()
 </script>
 
 <template>
-  <ul>
-    <li v-for="tag in tagMap.values()">
-      <RouterLink :to="`/reference/${tag.id}`">
-        {{ tag.id }}
-      </RouterLink>
-    </li>
-  </ul>
+  <article>
+    <h2>Tag</h2>
+    <ul>
+      <li v-for="tagEntry in tagMap.values()">
+        <RouterLink :to="`/reference/tag/${tagEntry.id}`">
+          <code class="use-link"><{{ tagEntry.id }}></code>
+        </RouterLink>
+      </li>
+    </ul>
+
+    <h2>Enum</h2>
+    <ul>
+      <li v-for="enumEntry in enumMap.values()">
+        <RouterLink :to="`/reference/enum/${enumEntry.id}`">
+          <code class="use-link">{{ enumEntry.id }}</code>
+        </RouterLink>
+      </li>
+    </ul>
+  </article>
 </template>
+
+<style scoped>
+article {
+  line-height: 1.5;
+}
+</style>

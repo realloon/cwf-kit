@@ -11,11 +11,13 @@ export interface XmlTag {
   description: string
   attributes: Array<Attribute>
   parents: Array<string>
-  children: Array<string>
+  children: Array<`${ValueType}:${string}`>
   isArray: boolean
   example: string
   updateAt: number
 }
+
+export type ValueType = 'tag' | 'defName' | 'enum'
 
 interface Attribute {
   name: string

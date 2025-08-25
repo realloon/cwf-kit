@@ -21,6 +21,10 @@ defineProps<{ to?: string }>()
 
   &:hover {
     background-color: #e5e5e5;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #252932;
+    }
   }
 }
 </style>
