@@ -1,0 +1,34 @@
+:root {
+  --font-sans: system-ui, ui-sans-serif, sans-serif;
+  --font-mono: ;
+
+  --gap-page: 48px;
+}
+
+body {
+  line-height: 1;
+  font-family: var(--font-sans);
+
+  margin: unset;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: 1rem;
+  font-weight: unset;
+  margin-block: unset;
+}
+
+a {
+  color: inherit;
+  text-decoration: unset;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
