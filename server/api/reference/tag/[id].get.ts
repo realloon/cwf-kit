@@ -1,4 +1,4 @@
-import referenceData from '../../../data/reference.json'
+import { tagsMap } from '../../../data/reference'
 
 export default defineEventHandler(async event => {
   const id = event.context.params?.id
@@ -9,7 +9,5 @@ export default defineEventHandler(async event => {
     })
   }
 
-  
-
-  return 'Hello Nitro'
+  return tagsMap.get(id)
 })

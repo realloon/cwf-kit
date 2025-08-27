@@ -3,20 +3,32 @@
   "tags": [
     {
       "id": "comps",
-      "type": "class",
-      "path": "Defs > ThingDef > comps",
-      "attributes": [],
+      "paths": ["Defs", "ThingDef", "comps"],
+      "attributes": null,
       "parents": null,
-      "children": ["tag:DynamicTraits", "tag:DynamicGraphic"],
+      "children": [
+        {
+          "type": "tag",
+          "id": "DynamicTraits"
+        },
+        {
+          "type": "tag",
+          "id": "DynamicGraphic"
+        }
+      ],
       "isArray": false,
       "example": null,
       "updateAt": 1756093117355
     },
     {
       "id": "DynamicTraits",
-      "type": "class",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\"]",
-      "attributes": [],
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicTraits\"]"
+      ],
+      "attributes": null,
       "parents": ["comps"],
       "children": ["tag:supportParts", "tag:defaultWeaponTraitDefs:optional"],
       "isArray": false,
@@ -25,9 +37,14 @@
     },
     {
       "id": "supportParts",
-      "type": "array",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits\" > supportParts]",
-      "attributes": [],
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicTraits\"]",
+        "supportParts"
+      ],
+      "attributes": null,
       "parents": ["DynamicTraits"],
       "children": ["enum:Part"],
       "isArray": true,
@@ -36,9 +53,14 @@
     },
     {
       "id": "defaultWeaponTraitDefs",
-      "type": "array",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicTraits]\" > defaultWeaponTraitDefs",
-      "attributes": [],
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicTraits\"]",
+        "defaultWeaponTraitDefs"
+      ],
+      "attributes": null,
       "parents": ["DynamicTraits"],
       "children": ["defName:WeaponTraitDef"],
       "isArray": true,
@@ -47,9 +69,13 @@
     },
     {
       "id": "DynamicGraphic",
-      "type": "class",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\"",
-      "attributes": [],
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
+      "attributes": null,
       "parents": ["comps"],
       "children": ["tag:attachmentPoints"],
       "isArray": false,
@@ -58,9 +84,13 @@
     },
     {
       "id": "attachmentPoints",
-      "type": "class",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\" > attachmentPoints",
-      "attributes": [],
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
+      "attributes": null,
       "parents": ["DynamicGraphic"],
       "children": [
         "tag:part",
@@ -74,8 +104,12 @@
     },
     {
       "id": "part",
-      "type": "enum:Part",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\" > attachmentPoints > part",
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
       "attributes": null,
       "parents": ["attachmentPoints"],
       "children": null,
@@ -85,8 +119,12 @@
     },
     {
       "id": "baseTexture",
-      "type": "class",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\" > attachmentPoints > baseTexture",
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
       "attributes": null,
       "parents": ["attachmentPoints"],
       "children": ["tag:texturePath", "tag:offset"],
@@ -96,8 +134,12 @@
     },
     {
       "id": "texturePath",
-      "type": "string",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\" > attachmentPoints > baseTexture > texturePath",
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
       "attributes": null,
       "parents": ["baseTexture"],
       "children": null,
@@ -107,8 +149,12 @@
     },
     {
       "id": "offset",
-      "type": "string",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\" > attachmentPoints > baseTexture > offset",
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
       "attributes": null,
       "parents": ["baseTexture"],
       "children": null,
@@ -118,8 +164,12 @@
     },
     {
       "id": "layer",
-      "type": "number",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\" > attachmentPoints > baseTexture > layer",
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
       "attributes": null,
       "parents": ["attachmentPoints"],
       "children": null,
@@ -129,8 +179,12 @@
     },
     {
       "id": "receivesColor",
-      "type": "boolean",
-      "path": "Defs > ThingDef > comps > li[Class=\"CWF.CompProperties_DynamicGraphic\" > attachmentPoints > baseTexture > receivesColor",
+      "paths": [
+        "Defs",
+        "ThingDef",
+        "comps",
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+      ],
       "attributes": null,
       "parents": ["attachmentPoints"],
       "children": null,
