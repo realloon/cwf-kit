@@ -9,6 +9,7 @@
 
     <nav>
       <ul>
+        <li><nuxt-link to="reference">API</nuxt-link></li>
         <li><nuxt-link to="offset-calc">offset-calc</nuxt-link></li>
       </ul>
     </nav>

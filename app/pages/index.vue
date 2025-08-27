@@ -13,7 +13,7 @@
         <nuxt-link>Guide</nuxt-link>
       </common-button>
       <common-button>
-        <nuxt-link>API Reference</nuxt-link>
+        <nuxt-link to="reference">API Reference</nuxt-link>
       </common-button>
     </nav>
   </section>
