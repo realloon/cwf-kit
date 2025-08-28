@@ -1,5 +1,12 @@
 <script setup lang="ts">
-const { data: tags } = await useFetch('/api/reference/tag')
+const { data: reference } = await useFetch('/api/reference')
+
+const tags = computed(() =>
+  reference.value?.tags.toSorted((a, b) => a.id.localeCompare(b.id))
+)
+const enums = computed(() =>
+  reference.value?.enums.toSorted((a, b) => a.id.localeCompare(b.id))
+)
 </script>
 
 <template>
@@ -9,8 +16,10 @@ const { data: tags } = await useFetch('/api/reference/tag')
     <nav>
       <h2>Tags</h2>
       <ul>
-        <li v-for="tag in tags">
-          <nuxt-link :to="`/reference/tag/${tag.id}`">{{ tag.id }}</nuxt-link>
+        <li v-for="tagEntry in tags">
+          <nuxt-link :to="`/reference/tag/${tagEntry.id}`">{{
+            tagEntry.id
+          }}</nuxt-link>
         </li>
       </ul>
     </nav>
@@ -18,8 +27,10 @@ const { data: tags } = await useFetch('/api/reference/tag')
     <nav>
       <h2>Enum</h2>
       <ul>
-        <li v-for="tag in tags">
-          <nuxt-link :to="`/reference/tag/${tag.id}`">{{ tag.id }}</nuxt-link>
+        <li v-for="enumEntry in enums">
+          <nuxt-link :to="`/reference/tag/${enumEntry.id}`">{{
+            enumEntry.id
+          }}</nuxt-link>
         </li>
       </ul>
     </nav>

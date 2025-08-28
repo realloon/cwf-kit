@@ -110,11 +110,13 @@
       "parents": ["comps"],
       "content": {
         "type": "object",
-        "properties": {
-          "ref": "attachmentPoints",
-          "required": true,
-          "description": ""
-        }
+        "properties": [
+          {
+            "ref": "attachmentPoints",
+            "required": true,
+            "description": ""
+          }
+        ]
       },
       "example": "<li Class=\"CWF.CompProperties_DynamicGraphic\"><attachmentPoints><li><part>Receiver</part><baseTexture><texturePath>CustomizeWeapon/Weapons/BoltActionRifle/Receiver</texturePath><offset>(0, 0)</offset></baseTexture><layer>0</layer></li><li><part>Sight</part><baseTexture><offset>(75, 149)</offset></baseTexture><layer>5</layer></li><!-- <li>...</li> --></attachmentPoints></li>",
       "updateAt": 1756213767043
