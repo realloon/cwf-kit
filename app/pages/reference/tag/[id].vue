@@ -34,32 +34,62 @@ const { data: tag } = await useFetch(`/api/reference/tag/${route.params.id}`)
     <section v-if="tag?.content" class="content">
       <h2>Content</h2>
 
-      <!-- enum -->
-      <ul
-        v-if="tag.content.type === 'array' && tag.content.items.type === 'enum'"
-      >
-        <li class="tag">li</li>
-        <p>
-          type: <code>{{ tag.content.items.ref }}</code> (enum)
-        </p>
+      <template v-if="tag.content.type === 'array'">
         <ul>
-          <li v-for="item in tag.content.items.ref">{{ item }}</li>
-        </ul>
-      </ul>
+          <li class="tag">li</li>
 
-      <!-- nest tags -->
-      <ul
-        v-if="
-          tag.content.type === 'array' && tag.content.items.type === 'object'
-        "
-      >
-        <li v-for="item in tag.content.items.properties">
-          <span class="tag">{{ item.ref }}</span>
-        </li>
-      </ul>
+          <ul class="nest-ul" v-if="tag.content.items.type === 'enum'">
+            <p>
+              type: <code>{{ tag.content.items.ref }}</code> (enum)
+            </p>
+            <ul>
+              <li v-for="item in tag.content.items.ref">{{ item }}</li>
+            </ul>
+          </ul>
+
+          <!-- nest tags -->
+          <ul v-else-if="tag.content.items.type === 'object'">
+            <li v-for="item in tag.content.items.properties">
+              <span class="tag">{{ item.ref }}</span>
+              <span class="optional" v-if="!item.required">optional</span>
+            </li>
+          </ul>
+
+          <p v-else>
+            type: <code>{{ tag.content.items.type }}</code>
+          </p>
+        </ul>
+      </template>
+
+      <template v-else>
+        <ul v-if="tag.content.type === 'object'">
+          <li v-for="item in tag.content.properties">
+            <span class="tag">{{ item.ref }}</span>
+            <span class="optional" v-if="!item.required">optional</span>
+          </li>
+        </ul>
+
+        <ul v-else>
+          <li v-if="tag.content.type === 'enum'">
+            <p>
+              type: <code>{{ tag.content.ref }}</code> (enum)
+            </p>
+            <ul>
+              <li v-for="item in tag.content.ref">{{ item }}</li>
+            </ul>
+          </li>
+
+          <li v-else>
+            type: <code>{{ tag.content.type }}</code>
+          </li>
+        </ul>
+      </template>
     </section>
 
-    <pre style="font-size: 12px; line-height: 1.2">{{ tag?.example }}</pre>
+    <section class="example">
+      <h2>Example</h2>
+      <pre>{{ tag?.example }}</pre>
+    </section>
   </article>
 </template>
 
@@ -96,6 +126,14 @@ h1 {
   border-radius: 4px;
 }
 
+.nest-ul {
+  padding-inline-start: unset;
+}
+
+.example {
+  font-size: 14px;
+}
+
 .empty {
   font-style: italic;
   color: gray;
@@ -111,5 +149,12 @@ h1 {
   &::after {
     content: '>';
   }
+}
+
+.optional {
+  color: gray;
+  font-size: 0.875em;
+  font-family: var(--font-mono);
+  margin-inline-start: 0.5em;
 }
 </style>

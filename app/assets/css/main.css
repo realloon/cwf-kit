@@ -42,6 +42,11 @@ dl {
   margin-block: unset;
 }
 
+pre {
+  font-family: var(--font-mono);
+  margin-block: unset;
+}
+
 code {
   font-family: var(--font-mono);
   font-size: inherit;

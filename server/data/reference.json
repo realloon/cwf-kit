@@ -94,7 +94,7 @@
           "type": "string"
         }
       },
-      "example": "<defaultWeaponTraitDefs><li>CWF_Trait_IronSight</li><!-- <li>...</li> --></defaultWeaponTraitDefs>",
+      "example": "<defaultWeaponTraitDefs>\n  <li>CWF_Trait_IronSight</li>\n  <!-- <li>...</li> -->\n</defaultWeaponTraitDefs>",
       "updateAt": 1756141196800
     },
     {
@@ -161,7 +161,7 @@
           ]
         }
       },
-      "example": "<attachmentPoints><li><part>Receiver</part><baseTexture><texturePath>CustomizeWeapon/Weapons/BoltActionRifle/Receiver</texturePath><offset>(0, 0)</offset></baseTexture><layer>0</layer></li><li><part>Sight</part><baseTexture><offset>(75, 149)</offset></baseTexture><layer>5</layer></li><!-- <li>...</li> --></attachmentPoints>",
+      "example": "<attachmentPoints>\n  <li>\n    <part>Receiver</part>\n    <baseTexture>\n      <texturePath>CustomizeWeapon/Weapons/BoltActionRifle/Receiver</texturePath>\n      <offset>(0, 0)</offset>\n    </baseTexture>\n    <layer>0</layer>\n  </li>\n  <!-- <li>...</li> -->\n</attachmentPoints>",
       "updateAt": 1756213767043
     },
     {
