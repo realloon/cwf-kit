@@ -4,19 +4,24 @@
     {
       "id": "comps",
       "paths": ["Defs", "ThingDef", "comps"],
+      "description": "",
       "attributes": null,
       "parents": null,
-      "children": [
-        {
-          "type": "tag",
-          "id": "DynamicTraits"
-        },
-        {
-          "type": "tag",
-          "id": "DynamicGraphic"
-        }
-      ],
-      "isArray": false,
+      "content": {
+        "type": "object",
+        "properties": [
+          {
+            "ref": "DynamicTraits",
+            "required": false,
+            "description": ""
+          },
+          {
+            "ref": "DynamicGraphic",
+            "required": false,
+            "description": ""
+          }
+        ]
+      },
       "example": null,
       "updateAt": 1756093117355
     },
@@ -28,10 +33,24 @@
         "comps",
         "li[Class=\"CWF.CompProperties_DynamicTraits\"]"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["comps"],
-      "children": ["tag:supportParts", "tag:defaultWeaponTraitDefs:optional"],
-      "isArray": false,
+      "content": {
+        "type": "object",
+        "properties": [
+          {
+            "ref": "supportParts",
+            "required": true,
+            "description": ""
+          },
+          {
+            "ref": "defaultWeaponTraitDefs",
+            "required": false,
+            "description": ""
+          }
+        ]
+      },
       "example": "<li Class=\"CWF.CompProperties_DynamicTraits\"><supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><!-- <li>...</li> --></supportParts><defaultWeaponTraitDefs><li>CWF_Trait_IronSight</li><!-- <li>...</li> --></defaultWeaponTraitDefs></li>",
       "updateAt": 1756093117355
     },
@@ -44,10 +63,16 @@
         "li[Class=\"CWF.CompProperties_DynamicTraits\"]",
         "supportParts"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["DynamicTraits"],
-      "children": ["enum:Part"],
-      "isArray": true,
+      "content": {
+        "type": "array",
+        "items": {
+          "type": "enum",
+          "ref": "Part"
+        }
+      },
       "example": "<supportParts><li>Muzzle</li><li>Barrel</li><li>Receiver</li><!-- <li>...</li> --></supportParts>",
       "updateAt": 1756093126853
     },
@@ -60,10 +85,15 @@
         "li[Class=\"CWF.CompProperties_DynamicTraits\"]",
         "defaultWeaponTraitDefs"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["DynamicTraits"],
-      "children": ["defName:WeaponTraitDef"],
-      "isArray": true,
+      "content": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
       "example": "<defaultWeaponTraitDefs><li>CWF_Trait_IronSight</li><!-- <li>...</li> --></defaultWeaponTraitDefs>",
       "updateAt": 1756141196800
     },
@@ -75,10 +105,17 @@
         "comps",
         "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["comps"],
-      "children": ["tag:attachmentPoints"],
-      "isArray": false,
+      "content": {
+        "type": "object",
+        "properties": {
+          "ref": "attachmentPoints",
+          "required": true,
+          "description": ""
+        }
+      },
       "example": "<li Class=\"CWF.CompProperties_DynamicGraphic\"><attachmentPoints><li><part>Receiver</part><baseTexture><texturePath>CustomizeWeapon/Weapons/BoltActionRifle/Receiver</texturePath><offset>(0, 0)</offset></baseTexture><layer>0</layer></li><li><part>Sight</part><baseTexture><offset>(75, 149)</offset></baseTexture><layer>5</layer></li><!-- <li>...</li> --></attachmentPoints></li>",
       "updateAt": 1756213767043
     },
@@ -88,17 +125,40 @@
         "Defs",
         "ThingDef",
         "comps",
-        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]",
+        "attachmentPoints"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["DynamicGraphic"],
-      "children": [
-        "tag:part",
-        "tag:baseTexture",
-        "tag:layer",
-        "tag:receivesColor:optional"
-      ],
-      "isArray": true,
+      "content": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": [
+            {
+              "ref": "part",
+              "required": true,
+              "description": ""
+            },
+            {
+              "ref": "baseTexture",
+              "required": true,
+              "description": ""
+            },
+            {
+              "ref": "layer",
+              "required": true,
+              "description": ""
+            },
+            {
+              "ref": "receivesColor",
+              "required": false,
+              "description": ""
+            }
+          ]
+        }
+      },
       "example": "<attachmentPoints><li><part>Receiver</part><baseTexture><texturePath>CustomizeWeapon/Weapons/BoltActionRifle/Receiver</texturePath><offset>(0, 0)</offset></baseTexture><layer>0</layer></li><li><part>Sight</part><baseTexture><offset>(75, 149)</offset></baseTexture><layer>5</layer></li><!-- <li>...</li> --></attachmentPoints>",
       "updateAt": 1756213767043
     },
@@ -108,12 +168,18 @@
         "Defs",
         "ThingDef",
         "comps",
-        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]",
+        "attachmentPoints",
+        "li",
+        "part"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["attachmentPoints"],
-      "children": null,
-      "isArray": false,
+      "content": {
+        "type": "enum",
+        "ref": "Part"
+      },
       "example": "<part>Receiver</part>",
       "updateAt": 1756215252620
     },
@@ -123,12 +189,34 @@
         "Defs",
         "ThingDef",
         "comps",
-        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]",
+        "attachmentPoints",
+        "li",
+        "baseTexture"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["attachmentPoints"],
-      "children": ["tag:texturePath", "tag:offset"],
-      "isArray": false,
+      "content": {
+        "type": "object",
+        "properties": [
+          {
+            "ref": "texturePath",
+            "required": true,
+            "description": ""
+          },
+          {
+            "ref": "outlinePath",
+            "required": false,
+            "description": ""
+          },
+          {
+            "ref": "offset",
+            "required": true,
+            "description": ""
+          }
+        ]
+      },
       "example": "<baseTexture><texturePath>CustomizeWeapon/Weapons/BoltActionRifle/Receiver</texturePath><offset>(0, 0)</offset></baseTexture>",
       "updateAt": 1756217069336
     },
@@ -138,12 +226,18 @@
         "Defs",
         "ThingDef",
         "comps",
-        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]",
+        "attachmentPoints",
+        "li",
+        "baseTexture",
+        "texturePath"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["baseTexture"],
-      "children": null,
-      "isArray": false,
+      "content": {
+        "type": "string"
+      },
       "example": "<texturePath>CustomizeWeapon/Weapons/BoltActionRifle/Receiver</texturePath>",
       "updateAt": 1756217205385
     },
@@ -153,12 +247,18 @@
         "Defs",
         "ThingDef",
         "comps",
-        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]",
+        "attachmentPoints",
+        "li",
+        "baseTexture",
+        "offset"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["baseTexture"],
-      "children": null,
-      "isArray": false,
+      "content": {
+        "type": "string"
+      },
       "example": "<offset>(0, 0)</offset>",
       "updateAt": 1756217246372
     },
@@ -168,12 +268,17 @@
         "Defs",
         "ThingDef",
         "comps",
-        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]",
+        "attachmentPoints",
+        "li",
+        "layer"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["attachmentPoints"],
-      "children": null,
-      "isArray": false,
+      "content": {
+        "type": "integer"
+      },
       "example": "<layer>5</layer>",
       "updateAt": 1756217440587
     },
@@ -183,12 +288,18 @@
         "Defs",
         "ThingDef",
         "comps",
-        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]"
+        "li[Class=\"CWF.CompProperties_DynamicGraphic\"]",
+        "attachmentPoints",
+        "li",
+        "receivesColor"
       ],
+      "description": "",
       "attributes": null,
       "parents": ["attachmentPoints"],
-      "children": null,
-      "isArray": false,
+      "content": {
+        "type": "boolean",
+        "defaultValue": false
+      },
       "example": "<receivesColor>true</receivesColor>",
       "updateAt": 1756217440587
     }
