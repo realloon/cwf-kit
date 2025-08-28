@@ -15,7 +15,10 @@ const { data: tag } = await useFetch(`/api/reference/tag/${route.params.id}`)
       </ul>
     </section>
 
-    <p>{{ tag?.description || '[description]' }}</p>
+    <section class="description">
+      <span v-if="tag?.description">{{ tag.description }}</span>
+      <span class="empty" v-else>empty</span>
+    </section>
 
     <p class="path">{{ tag?.paths.join(' > ') }}</p>
 
@@ -30,6 +33,21 @@ const { data: tag } = await useFetch(`/api/reference/tag/${route.params.id}`)
 
     <section v-if="tag?.content" class="content">
       <h2>Content</h2>
+
+      <!-- enum -->
+      <ul
+        v-if="tag.content.type === 'array' && tag.content.items.type === 'enum'"
+      >
+        <li class="tag">li</li>
+        <p>
+          type: <code>{{ tag.content.items.ref }}</code> (enum)
+        </p>
+        <ul>
+          <li v-for="item in tag.content.items.ref">{{ item }}</li>
+        </ul>
+      </ul>
+
+      <!-- nest tags -->
       <ul
         v-if="
           tag.content.type === 'array' && tag.content.items.type === 'object'
@@ -48,10 +66,14 @@ const { data: tag } = await useFetch(`/api/reference/tag/${route.params.id}`)
 <style scoped>
 article {
   line-height: 1.5;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 h1 {
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-weight: bold;
   font-size: 1.25rem;
 
@@ -66,7 +88,7 @@ h1 {
 
 .path {
   font-size: 0.875rem;
-  font-family: monospace;
+  font-family: var(--font-mono);
 
   width: fit-content;
   padding: 4px 8px;
@@ -74,8 +96,13 @@ h1 {
   border-radius: 4px;
 }
 
+.empty {
+  font-style: italic;
+  color: gray;
+}
+
 .tag {
-  font-family: monospace;
+  font-family: var(--font-mono);
 
   &::before {
     content: '<';

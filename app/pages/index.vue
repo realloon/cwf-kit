@@ -34,7 +34,7 @@
 
   h1 {
     font-size: 2.25rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
 
   nav {

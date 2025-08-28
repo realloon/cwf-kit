@@ -1,6 +1,6 @@
 :root {
   --font-sans: system-ui, ui-sans-serif, sans-serif;
-  --font-mono: ;
+  --font-mono: 'Monaco', 'Cascadia Code', 'Consolas', ui-monospace, monospace;
 
   --gap-page: 48px;
 }
@@ -40,4 +40,9 @@ ol,
 dl {
   padding-inline-start: 2em;
   margin-block: unset;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: inherit;
 }
