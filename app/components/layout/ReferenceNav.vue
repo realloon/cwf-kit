@@ -64,6 +64,11 @@ nav {
     font-weight: bold;
   }
 
+  ul {
+    list-style: none;
+    padding-inline-start: unset;
+  }
+
   li {
     font-size: 1rem;
     font-family: monospace;
