@@ -10,7 +10,9 @@
 
 <style scoped>
 main {
+  width: var(--width-max);
   padding-inline: var(--gap-page);
+  margin-inline: auto;
 
   display: flex;
   align-items: flex-start;

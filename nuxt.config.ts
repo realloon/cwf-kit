@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/icon'],
+  modules: ['@nuxt/icon', 'nuxt-shiki'],
   css: ['~/assets/css/main.css'],
   imports: {
     dirs: ['types'],

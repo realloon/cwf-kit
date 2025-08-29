@@ -1,8 +1,11 @@
 :root {
   --font-sans: system-ui, ui-sans-serif, sans-serif;
+  --font-serif: 'Times New Roman', ui-serif, serif;
   --font-mono: 'Monaco', 'Cascadia Code', 'Consolas', ui-monospace, monospace;
 
-  --gap-page: 48px;
+  --width-max: min(100%, 1280px);
+  --gap-page: 24px;
+  --padding-page: max(calc((100% - var(--width-max)) / 2), var(--gap-page));
 }
 
 body {

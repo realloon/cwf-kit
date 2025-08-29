@@ -8,8 +8,10 @@
   </main>
 </template>
 
-<style>
+<style scoped>
 main {
+  width: var(--width-max);
   padding-inline: var(--gap-page);
+  margin-inline: auto;
 }
 </style>

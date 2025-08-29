@@ -18,8 +18,9 @@
 
 <style scoped>
 header {
+  width: var(--width-max);
   height: 48px;
-  padding-inline: var(--gap-page);
+  padding-inline: var(--padding-page);
 
   display: flex;
   align-items: center;
@@ -27,11 +28,11 @@ header {
 }
 
 h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.25rem;
+  font-family: var(--font-serif);
 
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 </style>
