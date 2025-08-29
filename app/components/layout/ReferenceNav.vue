@@ -28,7 +28,7 @@ const enums = computed(() =>
       <h2>Enum</h2>
       <ul>
         <li v-for="enumEntry in enums">
-          <nuxt-link :to="`/reference/tag/${enumEntry.id}`">{{
+          <nuxt-link :to="`/reference/enum/${enumEntry.id}`">{{
             enumEntry.id
           }}</nuxt-link>
         </li>

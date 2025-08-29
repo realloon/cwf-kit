@@ -3,19 +3,22 @@ definePageMeta({ layout: 'reference' })
 const route = useRoute()
 const { data: tag } = await useFetch(`/api/reference/tag/${route.params.id}`)
 
-import prettier from 'prettier/standalone'
-import * as prettierPluginHtml from 'prettier/plugins/html'
+const formated = await formatXml(tag.value?.example ?? '')
 
-const minifiedXml =
-  '<root><item id="1"><name>产品A</name><price>100</price></item><item id="2"><name>产品B</name><price>200</price></item></root>'
-
-prettier
-  .format(minifiedXml, {
-    parser: 'html',
-    plugins: [prettierPluginHtml],
-    htmlWhitespaceSensitivity: 'ignore',
-  })
-  .then(res => console.log(res))
+const enumDetail = await (async () => {
+  let enumRef: string | null = null
+  if (tag.value?.content.type === 'enum') {
+    enumRef = tag.value.content.ref
+  } else if (
+    tag.value?.content.type === 'array' &&
+    tag.value.content.items.type === 'enum'
+  ) {
+    enumRef = tag.value.content.items.ref
+  }
+  if (!enumRef) return
+  const { data } = await useFetch(`/api/reference/enum/${enumRef}`)
+  return data.value
+})()
 </script>
 
 <template>
@@ -54,10 +57,16 @@ prettier
 
           <ul class="nest-ul" v-if="tag.content.items.type === 'enum'">
             <p>
-              type: <code>{{ tag.content.items.ref }}</code> (enum)
+              <span>type: </span>
+              <nuxt-link :to="`/reference/enum/${tag.content.items.ref}`">
+                <code>{{ tag.content.items.ref }}</code>
+              </nuxt-link>
+              <span> (enum)</span>
             </p>
             <ul>
-              <li v-for="item in tag.content.items.ref">{{ item }}</li>
+              <li v-for="item in enumDetail?.values">
+                <code>{{ item }}</code>
+              </li>
             </ul>
           </ul>
 
@@ -86,10 +95,16 @@ prettier
         <ul v-else>
           <li v-if="tag.content.type === 'enum'">
             <p>
-              type: <code>{{ tag.content.ref }}</code> (enum)
+              <span>type: </span>
+              <nuxt-link :to="`/reference/enum/${tag.content.ref}`">
+                <code>{{ tag.content.ref }}</code>
+              </nuxt-link>
+              <span> (enum)</span>
             </p>
             <ul>
-              <li v-for="item in tag.content.ref">{{ item }}</li>
+              <li v-for="item in enumDetail?.values">
+                <code>{{ item }}</code>
+              </li>
             </ul>
           </li>
 
@@ -100,9 +115,9 @@ prettier
       </template>
     </section>
 
-    <section class="example">
+    <section v-if="tag?.example" class="example">
       <h2>Example</h2>
-      <pre>{{ tag?.example }}</pre>
+      <shiki :code="formated" lang="xml" />
     </section>
   </article>
 </template>
