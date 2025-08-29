@@ -36,4 +36,11 @@ h1 {
   align-items: center;
   gap: 0.25rem;
 }
+
+ul {
+  list-style: none;
+
+  display: flex;
+  gap: 1rem;
+}
 </style>
