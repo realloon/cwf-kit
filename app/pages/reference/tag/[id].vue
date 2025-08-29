@@ -2,6 +2,20 @@
 definePageMeta({ layout: 'reference' })
 const route = useRoute()
 const { data: tag } = await useFetch(`/api/reference/tag/${route.params.id}`)
+
+import prettier from 'prettier/standalone'
+import * as prettierPluginHtml from 'prettier/plugins/html'
+
+const minifiedXml =
+  '<root><item id="1"><name>产品A</name><price>100</price></item><item id="2"><name>产品B</name><price>200</price></item></root>'
+
+prettier
+  .format(minifiedXml, {
+    parser: 'html',
+    plugins: [prettierPluginHtml],
+    htmlWhitespaceSensitivity: 'ignore',
+  })
+  .then(res => console.log(res))
 </script>
 
 <template>
