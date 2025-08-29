@@ -18,6 +18,7 @@
 
 <style scoped>
 header {
+  box-sizing: border-box;
   width: var(--width-max);
   height: 48px;
   padding-inline: var(--padding-page);

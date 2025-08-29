@@ -43,7 +43,9 @@ const enumDetail = await (async () => {
       <h2>Parents</h2>
       <ul>
         <li v-for="parent in tag.parents">
-          <span class="tag">{{ parent }}</span>
+          <span class="tag">
+            <nuxt-link :to="`/reference/tag/${parent}`">{{ parent }}</nuxt-link>
+          </span>
         </li>
       </ul>
     </section>
@@ -55,6 +57,7 @@ const enumDetail = await (async () => {
         <ul>
           <li class="tag">li</li>
 
+          <!-- nest enums -->
           <ul class="nest-ul" v-if="tag.content.items.type === 'enum'">
             <p>
               <span>type: </span>
@@ -73,7 +76,11 @@ const enumDetail = await (async () => {
           <!-- nest tags -->
           <ul v-else-if="tag.content.items.type === 'object'">
             <li v-for="item in tag.content.items.properties">
-              <span class="tag">{{ item.ref }}</span>
+              <span class="tag">
+                <nuxt-link :to="`/reference/tag/${item.ref}`">
+                  {{ item.ref }}
+                </nuxt-link>
+              </span>
               <span class="optional" v-if="!item.required">optional</span>
             </li>
           </ul>

@@ -10,6 +10,7 @@
 
 <style scoped>
 main {
+  box-sizing: border-box;
   width: var(--width-max);
   padding-inline: var(--gap-page);
   margin-inline: auto;
